@@ -45,94 +45,46 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '✨';
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 1.5rem;
-            opacity: 0.5;
-        }
+        .hero::before { content: '✨'; position: absolute; top: 15px; left: 20px; font-size: 1.5rem; opacity: 0.5; }
+        .hero::after { content: '💅'; position: absolute; top: 20px; right: 20px; font-size: 1.8rem; opacity: 0.6; }
 
-        .hero::after {
-            content: '💅';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.8rem;
-            opacity: 0.6;
-        }
+        .hero-icon { font-size: 3rem; margin-bottom: 15px; animation: float 3s ease-in-out infinite; }
 
-        .hero-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 5px;
-            letter-spacing: -0.5px;
+            font-size: 2.4rem; font-weight: 700; color: var(--dark);
+            margin-bottom: 5px; letter-spacing: -0.5px;
         }
 
         .hero .subtitle {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--rose-dark);
-            font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+            font-size: 1.1rem; color: var(--rose-dark); font-weight: 400;
+            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;
         }
 
-        .hero .tagline {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+        .hero .tagline { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
 
-        .divider {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--rose), var(--gold));
-            margin: 20px auto;
-            border-radius: 2px;
-        }
+        .divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--rose), var(--gold)); margin: 20px auto; border-radius: 2px; }
 
         /* Services */
-        .services {
-            padding: 35px 25px;
-        }
+        .services { padding: 35px 25px; }
+        .services h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; text-align: center; margin-bottom: 25px; color: var(--dark); }
 
-        .services h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            text-align: center;
-            margin-bottom: 25px;
-            color: var(--dark);
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
+        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
         .service-card {
-            background: var(--rose-light);
-            border-radius: 14px;
-            padding: 20px 15px;
-            text-align: center;
-            transition: transform 0.3s;
+            background: var(--rose-light); border-radius: 14px; padding: 20px 15px;
+            text-align: center; transition: transform 0.3s; cursor: pointer;
+            border: 2px solid transparent;
         }
-
         .service-card:hover { transform: translateY(-3px); }
-
+        .service-card.selected { border-color: var(--rose-dark); background: #fce4ec; }
         .service-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
         .service-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
-        .service-card p { font-size: 0.8rem; color: var(--text-light); }
+        .service-card p { font-size: 0.78rem; color: var(--text-light); }
+        .service-card .price { font-size: 0.85rem; font-weight: 700; color: var(--rose-dark); margin-top: 6px; }
 
         /* Booking Section */
         .booking {
@@ -141,123 +93,118 @@
             text-align: center;
         }
 
-        .booking h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 8px;
-        }
+        .booking h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; margin-bottom: 8px; }
+        .booking > p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 25px; }
 
-        .booking p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        /* Booking Form */
         .booking-form {
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin-bottom: 20px;
+            background: rgba(255,255,255,0.08); border-radius: 16px;
+            padding: 25px 20px; margin-bottom: 20px;
         }
 
-        .form-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; }
 
         .form-group input, .form-group select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid rgba(255,255,255,0.15);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.06);
-            color: white;
-            font-size: 1rem;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.3s;
+            width: 100%; padding: 14px 16px;
+            border: 2px solid rgba(255,255,255,0.15); border-radius: 10px;
+            background: rgba(255,255,255,0.06); color: white;
+            font-size: 1rem; font-family: inherit; outline: none; transition: border-color 0.3s;
         }
-
         .form-group input::placeholder { color: rgba(255,255,255,0.35); }
         .form-group input:focus, .form-group select:focus { border-color: var(--rose); }
         .form-group select option { color: #333; background: white; }
 
+        /* Date picker */
+        .date-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px;
+        }
+
+        .date-btn {
+            padding: 10px 8px; border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 10px; background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.8); font-size: 0.82rem; font-family: inherit;
+            cursor: pointer; transition: all 0.3s; text-align: center;
+        }
+        .date-btn:hover { border-color: var(--rose); }
+        .date-btn.selected { border-color: var(--rose); background: rgba(232,160,191,0.2); color: white; font-weight: 600; }
+        .date-btn .day-name { font-size: 0.72rem; opacity: 0.7; display: block; }
+        .date-btn .day-num { font-size: 1rem; font-weight: 700; display: block; margin-top: 2px; }
+
+        /* Time slots */
+        .time-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+        }
+
+        .time-btn {
+            padding: 10px 6px; border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 10px; background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.8); font-size: 0.88rem; font-family: inherit;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .time-btn:hover { border-color: var(--rose); }
+        .time-btn.selected { border-color: var(--rose); background: rgba(232,160,191,0.2); color: white; font-weight: 600; }
+
         .whatsapp-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 18px;
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 14px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 18px; background: #25D366; color: white;
+            border: none; border-radius: 14px; font-size: 1.1rem; font-weight: 700;
+            font-family: inherit; cursor: pointer; transition: all 0.3s; text-decoration: none;
+            margin-top: 10px;
+        }
+        .whatsapp-btn:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        .whatsapp-btn svg { width: 24px; height: 24px; fill: white; }
+
+        /* PIX Section */
+        .pix-section {
+            padding: 35px 25px; text-align: center;
+            background: linear-gradient(135deg, #f9e4ef, #fdf0f5);
         }
 
-        .whatsapp-btn:hover {
-            background: #20bd5a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        .pix-section h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--dark); margin-bottom: 8px; }
+        .pix-section > p { color: var(--text-light); font-size: 0.88rem; margin-bottom: 25px; line-height: 1.5; }
+
+        .pix-box {
+            background: white; border-radius: 16px; padding: 25px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); margin-bottom: 15px;
         }
 
-        .whatsapp-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
+        .pix-icon { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .pix-key-label { font-size: 0.8rem; color: var(--text-light); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        .pix-key {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--rose-light); padding: 14px 20px; border-radius: 10px;
+            font-size: 1.15rem; font-weight: 700; color: var(--dark); letter-spacing: 1px;
+            margin-bottom: 15px;
         }
+
+        .copy-btn {
+            background: var(--rose-dark); color: white; border: none;
+            padding: 10px 25px; border-radius: 10px; font-size: 0.9rem;
+            font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.3s;
+        }
+        .copy-btn:hover { background: #c06090; transform: translateY(-1px); }
+        .copy-btn.copied { background: #4caf50; }
+
+        .pix-note { font-size: 0.78rem; color: var(--text-light); margin-top: 15px; font-style: italic; }
 
         /* Info */
-        .info {
-            padding: 30px 25px;
-            text-align: center;
-        }
+        .info { padding: 30px 25px; text-align: center; }
 
         .info-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-            justify-content: center;
+            display: flex; align-items: center; gap: 12px; padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0; justify-content: center;
         }
-
         .info-item:last-child { border-bottom: none; }
         .info-item .emoji { font-size: 1.3rem; }
         .info-item span { font-size: 0.95rem; color: var(--text); }
 
         /* Footer */
         .footer {
-            padding: 20px;
-            text-align: center;
-            background: var(--rose-light);
-            font-size: 0.8rem;
-            color: var(--text-light);
+            padding: 20px; text-align: center; background: var(--rose-light);
+            font-size: 0.8rem; color: var(--text-light);
         }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        .hero-icon { animation: float 3s ease-in-out infinite; }
     </style>
 </head>
 <body>
@@ -275,61 +222,88 @@
         <div class="services">
             <h2>✨ Serviços</h2>
             <div class="service-grid">
-                <div class="service-card">
+                <div class="service-card" onclick="selectService(this, 'Manicure')">
                     <div class="icon">💅</div>
                     <h3>Manicure</h3>
                     <p>Esmaltação perfeita</p>
+                    <div class="price">R$ 35</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="selectService(this, 'Pedicure')">
                     <div class="icon">🦶</div>
                     <h3>Pedicure</h3>
                     <p>Cuidado completo</p>
+                    <div class="price">R$ 45</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="selectService(this, 'Manicure + Pedicure')">
+                    <div class="icon">💅🦶</div>
+                    <h3>Mani + Pedi</h3>
+                    <p>Combo completo</p>
+                    <div class="price">R$ 70</div>
+                </div>
+                <div class="service-card" onclick="selectService(this, 'Unhas em Gel')">
                     <div class="icon">💎</div>
                     <h3>Unhas em Gel</h3>
                     <p>Durabilidade e brilho</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">🎨</div>
-                    <h3>Nail Art</h3>
-                    <p>Designs exclusivos</p>
+                    <div class="price">R$ 120</div>
                 </div>
             </div>
+            <p style="text-align:center; font-size:0.78rem; color:var(--text-light); margin-top:12px;">👆 Toque para selecionar o serviço</p>
         </div>
 
         <!-- Booking -->
         <div class="booking">
-            <h2>📱 Agende pelo WhatsApp</h2>
-            <p>Preencha seus dados e envie direto para meu WhatsApp!</p>
+            <h2>📅 Agende seu Horário</h2>
+            <p>Escolha dia, horário e envie direto pro WhatsApp!</p>
 
             <div class="booking-form">
                 <div class="form-group">
                     <label>Seu Nome</label>
                     <input type="text" id="clientName" placeholder="Digite seu nome">
                 </div>
+
                 <div class="form-group">
-                    <label>Serviço Desejado</label>
-                    <select id="serviceType">
-                        <option value="">Escolha o serviço</option>
-                        <option value="Manicure">💅 Manicure</option>
-                        <option value="Pedicure">🦶 Pedicure</option>
-                        <option value="Manicure + Pedicure">💅🦶 Manicure + Pedicure</option>
-                        <option value="Unhas em Gel">💎 Unhas em Gel</option>
-                        <option value="Nail Art">🎨 Nail Art</option>
-                        <option value="Outro">Outro</option>
-                    </select>
+                    <label>Serviço Selecionado</label>
+                    <input type="text" id="selectedService" placeholder="👆 Selecione acima" readonly style="cursor:default;">
                 </div>
+
                 <div class="form-group">
-                    <label>Data e Horário Desejado</label>
-                    <input type="text" id="desiredTime" placeholder="Ex: Sexta às 14h">
+                    <label>📅 Escolha o Dia</label>
+                    <div class="date-grid" id="dateGrid"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>⏰ Escolha o Horário</label>
+                    <div class="time-grid" id="timeGrid"></div>
                 </div>
             </div>
 
             <button class="whatsapp-btn" onclick="bookWhatsApp()">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Agendar no WhatsApp
+                Confirmar no WhatsApp
             </button>
+        </div>
+
+        <!-- PIX Payment -->
+        <div class="pix-section">
+            <h2>💳 Pague com PIX</h2>
+            <p>Garanta seu horário com um sinal via PIX!<br>O restante você paga no dia do atendimento.</p>
+
+            <div class="pix-box">
+                <div class="pix-icon">📱</div>
+                <div class="pix-key-label">Chave PIX (Telefone)</div>
+                <div class="pix-key">
+                    <span id="pixKey">61981527431</span>
+                </div>
+                <button class="copy-btn" id="copyBtn" onclick="copyPix()">📋 Copiar Chave PIX</button>
+                <p class="pix-note">💡 Após o pagamento, envie o comprovante pelo WhatsApp para confirmar seu agendamento.</p>
+            </div>
+
+            <div style="margin-top:15px;">
+                <p style="font-size:0.82rem; color:var(--text-light);">
+                    <strong>Diana Alves</strong><br>
+                    Banco: aparecerá ao escanear
+                </p>
+            </div>
         </div>
 
         <!-- Info -->
@@ -344,7 +318,7 @@
             </div>
             <div class="info-item">
                 <span class="emoji">⏰</span>
-                <span>Seg a Sáb — Horários flexíveis</span>
+                <span>Seg a Sáb — 8h às 19h</span>
             </div>
         </div>
 
@@ -355,25 +329,122 @@
     </div>
 
     <script>
+        let selectedServiceName = '';
+        let selectedDate = '';
+        let selectedTime = '';
+
+        // Service selection
+        function selectService(card, name) {
+            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedServiceName = name;
+            const price = card.querySelector('.price')?.textContent || '';
+            document.getElementById('selectedService').value = name + ' ' + price;
+        }
+
+        // Generate next 6 available days (Mon-Sat, skip Sunday)
+        function generateDates() {
+            const grid = document.getElementById('dateGrid');
+            const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+            let date = new Date();
+            date.setDate(date.getDate() + 1); // start from tomorrow
+            let count = 0;
+
+            while (count < 6) {
+                if (date.getDay() !== 0) { // skip Sunday
+                    const d = new Date(date);
+                    const dayName = days[d.getDay()];
+                    const dayNum = d.getDate();
+                    const month = months[d.getMonth()];
+                    const dateStr = `${dayName} ${dayNum}/${month}`;
+
+                    const btn = document.createElement('button');
+                    btn.className = 'date-btn';
+                    btn.innerHTML = `<span class="day-name">${dayName}</span><span class="day-num">${dayNum} ${month}</span>`;
+                    btn.onclick = () => {
+                        document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
+                        btn.classList.add('selected');
+                        selectedDate = dateStr;
+                    };
+                    grid.appendChild(btn);
+                    count++;
+                }
+                date.setDate(date.getDate() + 1);
+            }
+        }
+
+        // Generate time slots
+        function generateTimes() {
+            const grid = document.getElementById('timeGrid');
+            const times = ['08:00', '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+
+            times.forEach(time => {
+                const btn = document.createElement('button');
+                btn.className = 'time-btn';
+                btn.textContent = time;
+                btn.onclick = () => {
+                    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedTime = time;
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        // Copy PIX key
+        function copyPix() {
+            const key = document.getElementById('pixKey').textContent;
+            navigator.clipboard.writeText(key).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.textContent = '✅ Copiado!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '📋 Copiar Chave PIX';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const ta = document.createElement('textarea');
+                ta.value = key;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                const btn = document.getElementById('copyBtn');
+                btn.textContent = '✅ Copiado!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '📋 Copiar Chave PIX';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // WhatsApp booking
         function bookWhatsApp() {
             const name = document.getElementById('clientName').value.trim();
-            const service = document.getElementById('serviceType').value;
-            const time = document.getElementById('desiredTime').value.trim();
 
-            if (!name) {
-                alert('Por favor, digite seu nome! 😊');
-                document.getElementById('clientName').focus();
-                return;
-            }
+            if (!name) { alert('Por favor, digite seu nome! 😊'); document.getElementById('clientName').focus(); return; }
+            if (!selectedServiceName) { alert('Selecione um serviço! 💅'); return; }
+            if (!selectedDate) { alert('Escolha um dia! 📅'); return; }
+            if (!selectedTime) { alert('Escolha um horário! ⏰'); return; }
 
-            let msg = `Olá Diana! 💅\n\nMeu nome é *${name}*`;
-            if (service) msg += `\nServiço: *${service}*`;
-            if (time) msg += `\nHorário desejado: *${time}*`;
-            msg += `\n\nGostaria de agendar um horário! 😊`;
+            const price = document.getElementById('selectedService').value;
 
-            const encoded = encodeURIComponent(msg);
-            window.open(`https://wa.me/5561981527431?text=${encoded}`, '_blank');
+            let msg = `Olá Diana! 💅\n\n`;
+            msg += `Meu nome é *${name}*\n`;
+            msg += `Serviço: *${price}*\n`;
+            msg += `Dia: *${selectedDate}*\n`;
+            msg += `Horário: *${selectedTime}*\n`;
+            msg += `\nGostaria de confirmar esse horário! 😊`;
+
+            window.open(`https://wa.me/5561981527431?text=${encodeURIComponent(msg)}`, '_blank');
         }
+
+        // Init
+        generateDates();
+        generateTimes();
     </script>
 </body>
 </html>
