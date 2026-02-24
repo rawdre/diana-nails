@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana Alves — Manicure & Pedicure</title>
+    <meta name="description" content="Manicure e Pedicure profissional. Agende pelo WhatsApp!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --rose: #e8a0bf;
+            --rose-dark: #d4789e;
+            --rose-light: #fdf0f5;
+            --gold: #c9a96e;
+            --gold-light: #f5e6c8;
+            --dark: #2d2d2d;
+            --text: #444;
+            --text-light: #777;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--rose-light);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #f9e4ef 0%, #fdf0f5 40%, #f5e6c8 100%);
+            padding: 50px 30px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '✨';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '💅';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            opacity: 0.6;
+        }
+
+        .hero-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--rose-dark);
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero .tagline {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rose), var(--gold));
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Services */
+        .services {
+            padding: 35px 25px;
+        }
+
+        .services h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .service-card {
+            background: var(--rose-light);
+            border-radius: 14px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover { transform: translateY(-3px); }
+
+        .service-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .service-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+        .service-card p { font-size: 0.8rem; color: var(--text-light); }
+
+        /* Booking Section */
+        .booking {
+            padding: 35px 25px;
+            background: linear-gradient(135deg, #2d2d2d, #3d3d3d);
+            text-align: center;
+        }
+
+        .booking h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .booking p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder { color: rgba(255,255,255,0.35); }
+        .form-group input:focus, .form-group select:focus { border-color: var(--rose); }
+        .form-group select option { color: #333; background: white; }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Info */
+        .info {
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            justify-content: center;
+        }
+
+        .info-item:last-child { border-bottom: none; }
+        .info-item .emoji { font-size: 1.3rem; }
+        .info-item span { font-size: 0.95rem; color: var(--text); }
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: var(--rose-light);
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .hero-icon { animation: float 3s ease-in-out infinite; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-icon">💅</div>
+            <h1>Diana Alves</h1>
+            <div class="subtitle">Manicure & Pedicure</div>
+            <div class="divider"></div>
+            <p class="tagline">Unhas lindas com carinho e qualidade profissional.<br>Atendimento personalizado perto de você! 💖</p>
+        </div>
+
+        <!-- Services -->
+        <div class="services">
+            <h2>✨ Serviços</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="icon">💅</div>
+                    <h3>Manicure</h3>
+                    <p>Esmaltação perfeita</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🦶</div>
+                    <h3>Pedicure</h3>
+                    <p>Cuidado completo</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">💎</div>
+                    <h3>Unhas em Gel</h3>
+                    <p>Durabilidade e brilho</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🎨</div>
+                    <h3>Nail Art</h3>
+                    <p>Designs exclusivos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking -->
+        <div class="booking">
+            <h2>📱 Agende pelo WhatsApp</h2>
+            <p>Preencha seus dados e envie direto para meu WhatsApp!</p>
+
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>Seu Nome</label>
+                    <input type="text" id="clientName" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label>Serviço Desejado</label>
+                    <select id="serviceType">
+                        <option value="">Escolha o serviço</option>
+                        <option value="Manicure">💅 Manicure</option>
+                        <option value="Pedicure">🦶 Pedicure</option>
+                        <option value="Manicure + Pedicure">💅🦶 Manicure + Pedicure</option>
+                        <option value="Unhas em Gel">💎 Unhas em Gel</option>
+                        <option value="Nail Art">🎨 Nail Art</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Data e Horário Desejado</label>
+                    <input type="text" id="desiredTime" placeholder="Ex: Sexta às 14h">
+                </div>
+            </div>
+
+            <button class="whatsapp-btn" onclick="bookWhatsApp()">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Agendar no WhatsApp
+            </button>
+        </div>
+
+        <!-- Info -->
+        <div class="info">
+            <div class="info-item">
+                <span class="emoji">📍</span>
+                <span>Atendimento em salão — Brasília/DF</span>
+            </div>
+            <div class="info-item">
+                <span class="emoji">📞</span>
+                <span>(61) 98153-7431</span>
+            </div>
+            <div class="info-item">
+                <span class="emoji">⏰</span>
+                <span>Seg a Sáb — Horários flexíveis</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2026 Diana Alves — Manicure & Pedicure 💖
+        </div>
+    </div>
+
+    <script>
+        function bookWhatsApp() {
+            const name = document.getElementById('clientName').value.trim();
+            const service = document.getElementById('serviceType').value;
+            const time = document.getElementById('desiredTime').value.trim();
+
+            if (!name) {
+                alert('Por favor, digite seu nome! 😊');
+                document.getElementById('clientName').focus();
+                return;
+            }
+
+            let msg = `Olá Diana! 💅\n\nMeu nome é *${name}*`;
+            if (service) msg += `\nServiço: *${service}*`;
+            if (time) msg += `\nHorário desejado: *${time}*`;
+            msg += `\n\nGostaria de agendar um horário! 😊`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/5561981537431?text=${encoded}`, '_blank');
+        }
+    </script>
+</body>
+</html>
