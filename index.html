@@ -232,19 +232,19 @@
                     <div class="icon">🦶</div>
                     <h3>Pedicure</h3>
                     <p>Cuidado completo</p>
-                    <div class="price">R$ 45</div>
+                    <div class="price">R$ 35</div>
                 </div>
                 <div class="service-card" onclick="selectService(this, 'Manicure + Pedicure')">
                     <div class="icon">💅🦶</div>
                     <h3>Mani + Pedi</h3>
                     <p>Combo completo</p>
-                    <div class="price">R$ 70</div>
+                    <div class="price">R$ 60</div>
                 </div>
                 <div class="service-card" onclick="selectService(this, 'Unhas em Gel')">
                     <div class="icon">💎</div>
                     <h3>Unhas em Gel</h3>
                     <p>Durabilidade e brilho</p>
-                    <div class="price">R$ 120</div>
+                    <div class="price">R$ 140</div>
                 </div>
             </div>
             <p style="text-align:center; font-size:0.78rem; color:var(--text-light); margin-top:12px;">👆 Toque para selecionar o serviço</p>
@@ -426,9 +426,9 @@
             const name = document.getElementById('clientName').value.trim();
 
             if (!name) { alert('Por favor, digite seu nome! 😊'); document.getElementById('clientName').focus(); return; }
-            if (!selectedServiceName) { alert('Selecione um serviço! 💅'); return; }
-            if (!selectedDate) { alert('Escolha um dia! 📅'); return; }
-            if (!selectedTime) { alert('Escolha um horário! ⏰'); return; }
+            if (!selectedServiceName) { alert('Por favor, selecione um serviço acima! 💅'); return; }
+            if (!selectedDate) { alert('Por favor, escolha um dia! 📅'); return; }
+            if (!selectedTime) { alert('Por favor, escolha um horário! ⏰'); return; }
 
             const price = document.getElementById('selectedService').value;
 
@@ -437,7 +437,7 @@
             msg += `Serviço: *${price}*\n`;
             msg += `Dia: *${selectedDate}*\n`;
             msg += `Horário: *${selectedTime}*\n`;
-            msg += `\nGostaria de confirmar esse horário! 😊`;
+            msg += `\nGostaria de confirmar esse agendamento! 😊`;
 
             window.open(`https://wa.me/5561981527431?text=${encodeURIComponent(msg)}`, '_blank');
         }
