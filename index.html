@@ -3,291 +3,595 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diana Alves — Manicure & Pedicure</title>
-    <meta name="description" content="Manicure e Pedicure profissional. Agende pelo WhatsApp!">
+    <title>Diana Alves — Manicure & Pedicure Profissional</title>
+    <meta name="description" content="Manicure e Pedicure profissional em Grande Colorado, Brasília. Pacotes mensais disponíveis. Agende pelo WhatsApp!">
+    <meta property="og:title" content="Diana Alves — Manicure & Pedicure">
+    <meta property="og:description" content="Unhas lindas com carinho e qualidade profissional. Agende agora!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --rose: #e8a0bf;
-            --rose-dark: #d4789e;
-            --rose-light: #fdf0f5;
-            --gold: #c9a96e;
-            --gold-light: #f5e6c8;
-            --dark: #2d2d2d;
-            --text: #444;
-            --text-light: #777;
+            --rose: #d4789e;
+            --rose-soft: #f2c4d6;
+            --rose-glow: #e8a0bf;
+            --cream: #fdf6f0;
+            --cream-dark: #f5ede4;
+            --gold: #b8956a;
+            --gold-light: #d4b896;
+            --dark: #2a2225;
+            --text: #4a3f42;
+            --text-light: #8a7d80;
             --green: #25D366;
-            --red: #e74c3c;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--rose-light);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: linear-gradient(180deg, #f9f1ec 0%, #fdf6f0 100%);
             color: var(--dark);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
         .page {
             max-width: 480px;
             margin: 0 auto;
             min-height: 100vh;
-            background: white;
-            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+            background: var(--white);
+            box-shadow: 0 0 60px rgba(42,34,37,0.06);
+            overflow: hidden;
         }
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #f9e4ef 0%, #fdf0f5 40%, #f5e6c8 100%);
-            padding: 50px 30px 40px;
+        /* ═══════════════════════════════ LOGO ═══════════════════════════════ */
+        .logo-section {
+            padding: 45px 30px 10px;
+            text-align: center;
+            background: linear-gradient(170deg, #fdf6f0 0%, #fff 60%, #f9f1ec 100%);
+            position: relative;
+        }
+        .logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 200px; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px; height: 80px;
+            border: 2px solid var(--gold-light);
+            border-radius: 50%;
+            margin-bottom: 16px;
+            position: relative;
+            background: linear-gradient(135deg, #fdf6f0, #fff);
+        }
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 1px solid var(--rose-soft);
+            border-radius: 50%;
+        }
+        .logo-initials {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--rose);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .logo-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        .logo-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+        .logo-line {
+            width: 50px; height: 1.5px;
+            background: linear-gradient(90deg, var(--rose-soft), var(--gold-light));
+            margin: 18px auto 12px;
+            border-radius: 1px;
+        }
+        .logo-desc {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* ═══════════════════════════════ HERO BANNER ═══════════════════════════════ */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--dark) 0%, #3d2f33 100%);
+            padding: 30px 25px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .hero::before { content: '✨'; position: absolute; top: 15px; left: 20px; font-size: 1.5rem; opacity: 0.5; }
-        .hero::after { content: '💅'; position: absolute; top: 20px; right: 20px; font-size: 1.8rem; opacity: 0.6; }
-        .hero-icon { font-size: 3rem; margin-bottom: 15px; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
-        .hero .subtitle { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--rose-dark); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
-        .hero .tagline { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
-        .divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--rose), var(--gold)); margin: 20px auto; border-radius: 2px; }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -30%;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(212,120,158,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%; left: -20%;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(184,149,106,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rose), var(--gold));
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .hero-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-banner p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
 
-        /* Step indicators */
+        /* ═══════════════════════════════ STEP BAR ═══════════════════════════════ */
         .steps-bar {
             display: flex; justify-content: center; gap: 8px;
-            padding: 20px 25px 10px; background: white;
+            padding: 22px 25px 12px; background: white;
         }
         .step-dot {
             width: 10px; height: 10px; border-radius: 50%;
-            background: #ddd; transition: all 0.3s;
+            background: #e8e0dc; transition: all 0.4s ease;
         }
-        .step-dot.active { background: var(--rose-dark); width: 30px; border-radius: 5px; }
+        .step-dot.active { background: var(--rose); width: 30px; border-radius: 5px; }
         .step-dot.done { background: var(--green); }
 
-        /* Sections */
-        .step-section { display: none; }
+        .step-section { display: none; animation: fadeIn 0.4s ease; }
         .step-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Services */
-        .services { padding: 35px 25px; }
-        .services h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; text-align: center; margin-bottom: 25px; color: var(--dark); }
+        /* ═══════════════════════════════ SERVICES ═══════════════════════════════ */
+        .services { padding: 35px 25px 15px; }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
         .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .service-card {
-            background: var(--rose-light); border-radius: 14px; padding: 20px 15px;
-            text-align: center; cursor: pointer; border: 2px solid transparent; transition: all 0.3s;
-        }
-        .service-card:hover { transform: translateY(-3px); }
-        .service-card.selected { border-color: var(--rose-dark); background: #fce4ec; }
-        .service-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
-        .service-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
-        .service-card p { font-size: 0.78rem; color: var(--text-light); }
-        .service-card .price { font-size: 0.95rem; font-weight: 700; color: var(--rose-dark); margin-top: 6px; }
 
-        /* Booking */
-        .booking { padding: 35px 25px; background: linear-gradient(135deg, #2d2d2d, #3d3d3d); text-align: center; }
-        .booking h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; margin-bottom: 8px; }
-        .booking > p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 25px; }
-        .booking-form { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 25px 20px; }
-        .form-group { margin-bottom: 16px; text-align: left; }
-        .form-group label { display: block; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; }
-        .form-group input {
-            width: 100%; padding: 14px 16px; border: 2px solid rgba(255,255,255,0.15);
-            border-radius: 10px; background: rgba(255,255,255,0.06); color: white;
-            font-size: 1rem; font-family: inherit; outline: none;
+        .service-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 22px 14px 18px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        .form-group input::placeholder { color: rgba(255,255,255,0.35); }
-        .form-group input:focus { border-color: var(--rose); }
+        .service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(212,120,158,0.1); }
+        .service-card.selected { border-color: var(--rose); background: #fce8f0; }
+        .service-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .service-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+        .service-card .desc { font-size: 0.75rem; color: var(--text-light); line-height: 1.4; }
+        .service-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem; font-weight: 700;
+            color: var(--rose);
+            margin-top: 8px;
+        }
+
+        /* ═══════════════════ MONTHLY PACKAGE (HIGHLIGHT) ═══════════════════ */
+        .package-section { padding: 10px 25px 30px; }
+
+        .package-card {
+            background: linear-gradient(135deg, var(--dark) 0%, #3d2f33 100%);
+            border-radius: 20px;
+            padding: 28px 22px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: -40%; right: -20%;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(212,120,158,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .package-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(42,34,37,0.2); }
+        .package-card.selected { border-color: var(--gold); }
+
+        .package-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #d4b896);
+            color: var(--dark);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .package-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .package-card .package-desc {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .package-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .package-old-price {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+        }
+        .package-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+        .package-price-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+            position: relative;
+            z-index: 1;
+        }
+        .package-savings {
+            display: inline-block;
+            background: rgba(37,211,102,0.15);
+            color: #4caf50;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .select-hint {
+            text-align: center;
+            font-size: 0.76rem;
+            color: var(--text-light);
+            margin-top: 18px;
+        }
+
+        /* ═══════════════════════════════ BUTTONS ═══════════════════════════════ */
+        .btn-primary {
+            display: block; width: 100%;
+            padding: 16px;
+            background: var(--rose);
+            color: white;
+            border: none; border-radius: 14px;
+            font-size: 1rem; font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        .btn-primary:hover { background: #c06a8e; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,120,158,0.3); }
+
+        .nav-btns { display: flex; gap: 12px; margin-top: 20px; }
+        .btn-next, .btn-back {
+            flex: 1; padding: 14px; border-radius: 12px; font-size: 1rem;
+            font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.3s; border: none;
+        }
+        .btn-next { background: var(--rose); color: white; }
+        .btn-next:hover { background: #c06a8e; }
+        .btn-back { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+        .btn-back:hover { background: rgba(255,255,255,0.2); }
+        .btn-back-light { background: var(--cream); color: var(--text); border: none; }
+        .btn-back-light:hover { background: var(--cream-dark); }
+
+        /* ═══════════════════════════════ BOOKING ═══════════════════════════════ */
+        .booking {
+            padding: 35px 25px;
+            background: linear-gradient(135deg, var(--dark), #3d2f33);
+            text-align: center;
+        }
+        .booking h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: white; margin-bottom: 6px; }
+        .booking > p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 22px; }
+        .booking-form { background: rgba(255,255,255,0.06); border-radius: 16px; padding: 22px 18px; }
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; color: rgba(255,255,255,0.75); font-size: 0.82rem; font-weight: 500; margin-bottom: 6px; }
+        .form-group input {
+            width: 100%; padding: 14px 16px; border: 2px solid rgba(255,255,255,0.12);
+            border-radius: 12px; background: rgba(255,255,255,0.05); color: white;
+            font-size: 1rem; font-family: inherit; outline: none; transition: border 0.3s;
+        }
+        .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+        .form-group input:focus { border-color: var(--rose-glow); }
 
         .date-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .date-btn {
-            padding: 10px 8px; border: 2px solid rgba(255,255,255,0.15); border-radius: 10px;
-            background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8);
+            padding: 10px 8px; border: 2px solid rgba(255,255,255,0.12); border-radius: 12px;
+            background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.7);
             font-size: 0.82rem; font-family: inherit; cursor: pointer; text-align: center; transition: all 0.3s;
         }
-        .date-btn:hover { border-color: var(--rose); }
-        .date-btn.selected { border-color: var(--rose); background: rgba(232,160,191,0.2); color: white; font-weight: 600; }
-        .date-btn .day-name { font-size: 0.72rem; opacity: 0.7; display: block; }
+        .date-btn:hover { border-color: var(--rose-glow); }
+        .date-btn.selected { border-color: var(--rose-glow); background: rgba(232,160,191,0.15); color: white; font-weight: 600; }
+        .date-btn .day-name { font-size: 0.7rem; opacity: 0.6; display: block; }
         .date-btn .day-num { font-size: 1rem; font-weight: 700; display: block; margin-top: 2px; }
 
         .time-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
         .time-btn {
-            padding: 10px 6px; border: 2px solid rgba(255,255,255,0.15); border-radius: 10px;
-            background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8);
+            padding: 10px 6px; border: 2px solid rgba(255,255,255,0.12); border-radius: 12px;
+            background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.7);
             font-size: 0.88rem; font-family: inherit; cursor: pointer; transition: all 0.3s;
         }
-        .time-btn:hover { border-color: var(--rose); }
-        .time-btn.selected { border-color: var(--rose); background: rgba(232,160,191,0.2); color: white; font-weight: 600; }
+        .time-btn:hover { border-color: var(--rose-glow); }
+        .time-btn.selected { border-color: var(--rose-glow); background: rgba(232,160,191,0.15); color: white; font-weight: 600; }
 
-        /* PIX Section */
-        .pix-section { padding: 35px 25px; text-align: center; background: linear-gradient(135deg, #f9e4ef, #fdf0f5); }
-        .pix-section h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--dark); margin-bottom: 8px; }
-        .pix-section > p { color: var(--text-light); font-size: 0.88rem; margin-bottom: 20px; line-height: 1.5; }
+        /* ═══════════════════════════════ PIX ═══════════════════════════════ */
+        .pix-section { padding: 35px 25px; text-align: center; background: linear-gradient(180deg, var(--cream), #fff); }
+        .pix-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 6px; }
+        .pix-section > p { color: var(--text-light); font-size: 0.85rem; margin-bottom: 22px; line-height: 1.5; }
 
         .deposit-summary {
-            background: white; border-radius: 14px; padding: 20px;
-            margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            background: white; border-radius: 16px; padding: 22px;
+            margin-bottom: 18px; box-shadow: 0 4px 20px rgba(42,34,37,0.06);
+            border: 1px solid #f0e8e4;
         }
         .deposit-summary .service-name { font-weight: 700; color: var(--dark); font-size: 1rem; }
-        .deposit-summary .total-line { color: var(--text-light); font-size: 0.88rem; margin: 5px 0; }
+        .deposit-summary .total-line { color: var(--text-light); font-size: 0.85rem; margin: 5px 0; }
         .deposit-summary .deposit-amount {
-            font-size: 1.8rem; font-weight: 800; color: var(--rose-dark); margin: 10px 0 5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem; font-weight: 700; color: var(--rose); margin: 10px 0 4px;
         }
-        .deposit-summary .deposit-label { font-size: 0.82rem; color: var(--text-light); }
+        .deposit-summary .deposit-label { font-size: 0.78rem; color: var(--text-light); }
 
         .no-show-warning {
-            background: #fff3e0; border: 1px solid #ffcc02; border-radius: 12px;
-            padding: 14px 18px; margin-bottom: 20px; text-align: left;
+            background: #fff8f0; border: 1px solid #ffe0b2; border-radius: 14px;
+            padding: 14px 18px; margin-bottom: 18px; text-align: left;
         }
-        .no-show-warning .title { font-weight: 700; color: #e65100; font-size: 0.88rem; margin-bottom: 4px; }
-        .no-show-warning p { font-size: 0.82rem; color: #bf360c; line-height: 1.5; }
+        .no-show-warning .title { font-weight: 700; color: #e65100; font-size: 0.85rem; margin-bottom: 4px; }
+        .no-show-warning p { font-size: 0.8rem; color: #bf360c; line-height: 1.5; }
 
         .pix-box {
-            background: white; border-radius: 16px; padding: 25px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06); margin-bottom: 15px;
+            background: white; border-radius: 18px; padding: 25px 20px;
+            box-shadow: 0 4px 20px rgba(42,34,37,0.06); margin-bottom: 15px;
+            border: 1px solid #f0e8e4;
         }
         .pix-icon { font-size: 2.5rem; margin-bottom: 10px; }
-        .pix-key-label { font-size: 0.8rem; color: var(--text-light); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .pix-key-label { font-size: 0.75rem; color: var(--text-light); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
         .pix-key {
             display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: var(--rose-light); padding: 14px 20px; border-radius: 10px;
+            background: var(--cream); padding: 14px 20px; border-radius: 12px;
             font-size: 1.15rem; font-weight: 700; color: var(--dark); letter-spacing: 1px; margin-bottom: 15px;
         }
         .copy-btn {
-            background: var(--rose-dark); color: white; border: none; padding: 10px 25px;
-            border-radius: 10px; font-size: 0.9rem; font-weight: 600; font-family: inherit;
+            background: var(--rose); color: white; border: none; padding: 12px 28px;
+            border-radius: 12px; font-size: 0.88rem; font-weight: 600; font-family: inherit;
             cursor: pointer; transition: all 0.3s;
         }
-        .copy-btn:hover { background: #c06090; }
+        .copy-btn:hover { background: #c06a8e; }
         .copy-btn.copied { background: #4caf50; }
 
-        /* Confirm checkbox */
         .confirm-section { margin-top: 25px; }
-
         .confirm-check {
             display: flex; align-items: flex-start; gap: 12px;
-            background: white; border-radius: 12px; padding: 16px;
-            cursor: pointer; text-align: left; border: 2px solid #ddd; transition: all 0.3s;
+            background: white; border-radius: 14px; padding: 16px;
+            cursor: pointer; text-align: left; border: 2px solid #e8e0dc; transition: all 0.3s;
         }
         .confirm-check.checked { border-color: var(--green); background: #e8f5e9; }
         .confirm-check input { margin-top: 3px; width: 20px; height: 20px; cursor: pointer; accent-color: var(--green); }
-        .confirm-check span { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
+        .confirm-check span { font-size: 0.85rem; color: var(--text); line-height: 1.5; }
         .confirm-check strong { color: var(--green); }
 
-        /* WhatsApp button */
         .whatsapp-btn {
             display: flex; align-items: center; justify-content: center; gap: 12px;
             width: 100%; padding: 18px; background: #25D366; color: white;
-            border: none; border-radius: 14px; font-size: 1.1rem; font-weight: 700;
+            border: none; border-radius: 14px; font-size: 1.05rem; font-weight: 700;
             font-family: inherit; cursor: pointer; transition: all 0.3s; margin-top: 20px;
         }
-        .whatsapp-btn:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-        .whatsapp-btn:disabled { background: #999; cursor: not-allowed; transform: none; box-shadow: none; }
-        .whatsapp-btn svg { width: 24px; height: 24px; fill: white; }
+        .whatsapp-btn:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.35); }
+        .whatsapp-btn:disabled { background: #b0b0b0; cursor: not-allowed; transform: none; box-shadow: none; }
+        .whatsapp-btn svg { width: 22px; height: 22px; fill: white; }
 
-        /* Nav buttons */
-        .nav-btns { display: flex; gap: 12px; margin-top: 20px; }
-        .btn-next, .btn-back {
-            flex: 1; padding: 14px; border-radius: 12px; font-size: 1rem;
-            font-weight: 700; font-family: inherit; cursor: pointer; transition: all 0.3s; border: none;
+        /* ═══════════════════════════════ INFO ═══════════════════════════════ */
+        .info { padding: 30px 25px; background: var(--cream); }
+        .info-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-weight: 600;
+            text-align: center; margin-bottom: 18px; color: var(--dark);
         }
-        .btn-next { background: var(--rose-dark); color: white; }
-        .btn-next:hover { background: #c06090; }
-        .btn-back { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); }
-        .btn-back:hover { background: rgba(255,255,255,0.25); }
-        .btn-back-light { background: #eee; color: var(--text); border: none; }
-        .btn-back-light:hover { background: #ddd; }
-
-        /* Info */
-        .info { padding: 30px 25px; text-align: center; }
-        .info-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; justify-content: center; }
+        .info-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 0; border-bottom: 1px solid rgba(42,34,37,0.06);
+        }
         .info-item:last-child { border-bottom: none; }
-        .info-item .emoji { font-size: 1.3rem; }
-        .info-item span { font-size: 0.95rem; color: var(--text); }
+        .info-icon {
+            width: 42px; height: 42px; border-radius: 12px;
+            background: white; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); flex-shrink: 0;
+        }
+        .info-item span { font-size: 0.9rem; color: var(--text); line-height: 1.4; }
 
-        .footer { padding: 20px; text-align: center; background: var(--rose-light); font-size: 0.8rem; color: var(--text-light); }
+        .footer {
+            padding: 22px; text-align: center;
+            background: var(--dark); color: rgba(255,255,255,0.4);
+            font-size: 0.75rem; letter-spacing: 0.5px;
+        }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem; font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 <body>
     <div class="page">
-        <!-- Hero -->
-        <div class="hero">
-            <div class="hero-icon">💅</div>
-            <h1>Diana Alves</h1>
-            <div class="subtitle">Manicure & Pedicure</div>
-            <div class="divider"></div>
-            <p class="tagline">Unhas lindas com carinho e qualidade profissional.<br>Atendimento personalizado perto de você! 💖</p>
+
+        <!-- ═══════════ LOGO ═══════════ -->
+        <div class="logo-section">
+            <div class="logo-mark">
+                <span class="logo-initials">DA</span>
+            </div>
+            <div class="logo-name">Diana Alves</div>
+            <div class="logo-tagline">Manicure & Pedicure</div>
+            <div class="logo-line"></div>
+            <p class="logo-desc">Unhas lindas com carinho e qualidade profissional.<br>Atendimento personalizado perto de você 💖</p>
         </div>
 
-        <!-- Step indicators -->
+        <!-- ═══════════ HERO BANNER ═══════════ -->
+        <div class="hero-banner">
+            <div class="hero-badge">✨ Novidade</div>
+            <h2>Pacote Mensal Disponível!</h2>
+            <p>4 sessões de mani + pedi por um preço especial</p>
+        </div>
+
+        <!-- ═══════════ STEPS ═══════════ -->
         <div class="steps-bar">
             <div class="step-dot active" id="dot1"></div>
             <div class="step-dot" id="dot2"></div>
             <div class="step-dot" id="dot3"></div>
         </div>
 
-        <!-- STEP 1: Service + Info -->
+        <!-- ═══════════ STEP 1: SERVICES ═══════════ -->
         <div class="step-section active" id="step1">
             <div class="services">
-                <h2>✨ Escolha o Serviço</h2>
+                <div class="section-title">Escolha o Serviço</div>
+                <p class="section-subtitle">Toque para selecionar</p>
                 <div class="service-grid">
                     <div class="service-card" onclick="selectService(this, 'Manicure', 35)">
                         <div class="icon">💅</div>
                         <h3>Manicure</h3>
-                        <p>Esmaltação perfeita</p>
+                        <div class="desc">Esmaltação perfeita</div>
                         <div class="price">R$ 35</div>
                     </div>
                     <div class="service-card" onclick="selectService(this, 'Pedicure', 35)">
                         <div class="icon">🦶</div>
                         <h3>Pedicure</h3>
-                        <p>Cuidado completo</p>
+                        <div class="desc">Cuidado completo</div>
                         <div class="price">R$ 35</div>
                     </div>
                     <div class="service-card" onclick="selectService(this, 'Manicure + Pedicure', 60)">
-                        <div class="icon">💅🦶</div>
+                        <div class="icon">✨</div>
                         <h3>Mani + Pedi</h3>
-                        <p>Combo completo</p>
+                        <div class="desc">Combo completo</div>
                         <div class="price">R$ 60</div>
                     </div>
                     <div class="service-card" onclick="selectService(this, 'Unhas em Gel', 140)">
                         <div class="icon">💎</div>
                         <h3>Unhas em Gel</h3>
-                        <p>Durabilidade e brilho</p>
+                        <div class="desc">Durabilidade e brilho</div>
                         <div class="price">R$ 140</div>
                     </div>
                 </div>
-                <p style="text-align:center; font-size:0.78rem; color:var(--text-light); margin-top:12px;">👆 Toque para selecionar</p>
-                <div style="padding-top:15px;">
-                    <button class="btn-next" style="width:100%;" onclick="goToStep(2)">Próximo → Agendar Horário</button>
+            </div>
+
+            <!-- ═══════════ MONTHLY PACKAGE ═══════════ -->
+            <div class="package-section">
+                <div class="package-card" id="packageCard" onclick="selectPackage(this)">
+                    <div class="package-badge">⭐ Melhor Valor</div>
+                    <h3>Pacote Mensal</h3>
+                    <p class="package-desc">4 sessões de Manicure + Pedicure por mês.<br>Agende suas 4 visitas e mantenha suas unhas sempre perfeitas!</p>
+                    <div class="package-price-row">
+                        <span class="package-old-price">R$ 240</span>
+                        <span class="package-price">R$ 220</span>
+                    </div>
+                    <div class="package-price-label">por mês • uso mensal</div>
+                    <div class="package-savings">Economia de R$ 20/mês 💰</div>
                 </div>
+
+                <button class="btn-primary" onclick="goToStep(2)" style="margin-top: 22px;">Próximo → Agendar Horário</button>
+                <p class="select-hint">👆 Selecione um serviço ou pacote acima</p>
             </div>
         </div>
 
-        <!-- STEP 2: Date + Time -->
+        <!-- ═══════════ STEP 2: BOOKING ═══════════ -->
         <div class="step-section" id="step2">
             <div class="booking">
                 <h2>📅 Escolha Dia e Horário</h2>
                 <p>Selecione quando você quer ser atendida</p>
-
                 <div class="booking-form">
                     <div class="form-group">
                         <label>Seu Nome</label>
                         <input type="text" id="clientName" placeholder="Digite seu nome">
                     </div>
-
                     <div class="form-group">
                         <label>📅 Escolha o Dia</label>
                         <div class="date-grid" id="dateGrid"></div>
                     </div>
-
                     <div class="form-group">
                         <label>⏰ Escolha o Horário</label>
                         <div class="time-grid" id="timeGrid"></div>
                     </div>
                 </div>
-
                 <div class="nav-btns">
                     <button class="btn-back" onclick="goToStep(1)">← Voltar</button>
                     <button class="btn-next" onclick="goToStep(3)">Próximo → Pagamento</button>
@@ -295,13 +599,12 @@
             </div>
         </div>
 
-        <!-- STEP 3: PIX Payment + Confirm -->
+        <!-- ═══════════ STEP 3: PIX PAYMENT ═══════════ -->
         <div class="step-section" id="step3">
             <div class="pix-section">
                 <h2>💳 Pagamento via PIX</h2>
                 <p>Para garantir seu horário, faça o pagamento do <strong>sinal de 50%</strong> via PIX.</p>
 
-                <!-- Deposit Summary -->
                 <div class="deposit-summary">
                     <div class="service-name" id="summaryService">—</div>
                     <div class="total-line">Valor total: <span id="summaryTotal">R$ 0</span></div>
@@ -310,13 +613,11 @@
                     <div class="total-line" style="margin-top:5px;">Restante no dia: <span id="summaryRemaining">R$ 0</span></div>
                 </div>
 
-                <!-- No-show warning -->
                 <div class="no-show-warning">
                     <div class="title">⚠️ Política de Cancelamento</div>
                     <p>O sinal de 50% <strong>não é reembolsável</strong> em caso de não comparecimento ou cancelamento com menos de 24h de antecedência. Valorizamos seu tempo e o nosso! 💖</p>
                 </div>
 
-                <!-- PIX Key -->
                 <div class="pix-box">
                     <div class="pix-icon">📱</div>
                     <div class="pix-key-label">Chave PIX (Telefone)</div>
@@ -326,7 +627,6 @@
                     <button class="copy-btn" id="copyBtn" onclick="copyPix()">📋 Copiar Chave PIX</button>
                 </div>
 
-                <!-- Confirm Payment -->
                 <div class="confirm-section">
                     <label class="confirm-check" id="confirmLabel" onclick="toggleConfirm()">
                         <input type="checkbox" id="confirmPaid" onclick="event.stopPropagation(); toggleConfirm()">
@@ -337,7 +637,7 @@
                         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Enviar Agendamento no WhatsApp
                     </button>
-                    <p style="font-size:0.78rem; color:var(--text-light); margin-top:10px;">🔒 O botão libera após confirmar o pagamento</p>
+                    <p style="font-size:0.76rem; color:var(--text-light); margin-top:10px;">🔒 O botão libera após confirmar o pagamento</p>
                 </div>
 
                 <div style="margin-top:20px;">
@@ -346,24 +646,31 @@
             </div>
         </div>
 
-        <!-- Info -->
+        <!-- ═══════════ INFO ═══════════ -->
         <div class="info">
+            <div class="info-title">Onde Estamos</div>
             <div class="info-item">
-                <span class="emoji">📍</span>
-                <span>Studio Neyde Maia — Rua do Pica Pau, Grande Colorado, Brasília/DF</span>
+                <div class="info-icon">📍</div>
+                <span>Studio Neyde Maia<br>Rua do Pica Pau, Grande Colorado, Brasília/DF</span>
             </div>
             <div class="info-item">
-                <span class="emoji">📞</span>
+                <div class="info-icon">📞</div>
                 <span>(61) 98152-7431</span>
             </div>
             <div class="info-item">
-                <span class="emoji">⏰</span>
-                <span>Seg a Sáb — 8h às 19h</span>
+                <div class="info-icon">⏰</div>
+                <span>Segunda a Sábado — 8h às 19h</span>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">💳</div>
+                <span>PIX • Dinheiro</span>
             </div>
         </div>
 
+        <!-- ═══════════ FOOTER ═══════════ -->
         <div class="footer">
-            © 2026 Diana Alves — Manicure & Pedicure 💖
+            <div class="footer-logo">Diana Alves</div>
+            © 2026 — Manicure & Pedicure Profissional 💖
         </div>
     </div>
 
@@ -372,16 +679,31 @@
         let selectedPrice = 0;
         let selectedDate = '';
         let selectedTime = '';
+        let isPackage = false;
 
-        // Service selection
         function selectService(card, name, price) {
             document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('packageCard').classList.remove('selected');
             card.classList.add('selected');
             selectedServiceName = name;
             selectedPrice = price;
+            isPackage = false;
         }
 
-        // Step navigation
+        function selectPackage(card) {
+            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+            card.classList.toggle('selected');
+            if (card.classList.contains('selected')) {
+                selectedServiceName = 'Pacote Mensal (4x Mani + Pedi)';
+                selectedPrice = 220;
+                isPackage = true;
+            } else {
+                selectedServiceName = '';
+                selectedPrice = 0;
+                isPackage = false;
+            }
+        }
+
         function goToStep(step) {
             if (step === 2 && !selectedServiceName) {
                 alert('Por favor, selecione um serviço! 💅');
@@ -394,64 +716,50 @@
                 if (!selectedTime) { alert('Por favor, escolha um horário! ⏰'); return; }
                 updateSummary();
             }
-
             document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
-
-            // Update dots
             for (let i = 1; i <= 3; i++) {
                 const dot = document.getElementById('dot' + i);
                 dot.classList.remove('active', 'done');
                 if (i < step) dot.classList.add('done');
                 if (i === step) dot.classList.add('active');
             }
-
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateSummary() {
             const deposit = Math.ceil(selectedPrice / 2);
             const remaining = selectedPrice - deposit;
-            document.getElementById('summaryService').textContent = selectedServiceName + ' — ' + selectedDate + ' às ' + selectedTime;
+            const label = isPackage
+                ? selectedServiceName + ' — 1ª sessão: ' + selectedDate + ' às ' + selectedTime
+                : selectedServiceName + ' — ' + selectedDate + ' às ' + selectedTime;
+            document.getElementById('summaryService').textContent = label;
             document.getElementById('summaryTotal').textContent = 'R$ ' + selectedPrice;
             document.getElementById('summaryDeposit').textContent = 'R$ ' + deposit;
             document.getElementById('summaryRemaining').textContent = 'R$ ' + remaining;
             document.getElementById('confirmAmount').textContent = 'R$ ' + deposit;
         }
 
-        // Confirm payment checkbox
         function toggleConfirm() {
             const cb = document.getElementById('confirmPaid');
             cb.checked = !cb.checked;
-            const label = document.getElementById('confirmLabel');
-            const btn = document.getElementById('whatsappBtn');
-            if (cb.checked) {
-                label.classList.add('checked');
-                btn.disabled = false;
-            } else {
-                label.classList.remove('checked');
-                btn.disabled = true;
-            }
+            document.getElementById('confirmLabel').classList.toggle('checked', cb.checked);
+            document.getElementById('whatsappBtn').disabled = !cb.checked;
         }
 
-        // Generate dates (next 6 days, skip Sunday)
         function generateDates() {
             const grid = document.getElementById('dateGrid');
-            const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-            const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+            const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+            const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
             let date = new Date(); date.setDate(date.getDate() + 1);
             let count = 0;
             while (count < 6) {
                 if (date.getDay() !== 0) {
                     const d = new Date(date);
-                    const dayName = days[d.getDay()];
-                    const dayNum = d.getDate();
-                    const month = months[d.getMonth()];
-                    const dateStr = dayName + ' ' + dayNum + '/' + month;
+                    const dateStr = days[d.getDay()] + ' ' + d.getDate() + '/' + months[d.getMonth()];
                     const btn = document.createElement('button');
                     btn.className = 'date-btn';
-                    btn.innerHTML = '<span class="day-name">' + dayName + '</span><span class="day-num">' + dayNum + ' ' + month + '</span>';
+                    btn.innerHTML = '<span class="day-name">' + days[d.getDay()] + '</span><span class="day-num">' + d.getDate() + ' ' + months[d.getMonth()] + '</span>';
                     btn.onclick = (function(ds) { return function() {
                         document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
                         this.classList.add('selected');
@@ -464,7 +772,6 @@
             }
         }
 
-        // Generate time slots
         function generateTimes() {
             const grid = document.getElementById('timeGrid');
             ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00','17:00','18:00'].forEach(time => {
@@ -480,7 +787,6 @@
             });
         }
 
-        // Copy PIX
         function copyPix() {
             const key = document.getElementById('pixKey').textContent;
             navigator.clipboard.writeText(key).then(() => {
@@ -496,20 +802,18 @@
             });
         }
 
-        // WhatsApp
         function bookWhatsApp() {
             if (!document.getElementById('confirmPaid').checked) return;
             const name = document.getElementById('clientName').value.trim();
             const deposit = Math.ceil(selectedPrice / 2);
-
             let msg = 'Olá Diana! 💅\n\n';
             msg += 'Meu nome é *' + name + '*\n';
             msg += 'Serviço: *' + selectedServiceName + '* (R$ ' + selectedPrice + ')\n';
             msg += 'Dia: *' + selectedDate + '*\n';
             msg += 'Horário: *' + selectedTime + '*\n';
             msg += 'Sinal pago: *R$ ' + deposit + '* via PIX ✅\n';
+            if (isPackage) msg += '\n📋 *Pacote mensal* — vamos agendar as outras 3 sessões!\n';
             msg += '\nSegue o comprovante! 📸';
-
             window.open('https://wa.me/5561981527431?text=' + encodeURIComponent(msg), '_blank');
         }
 
