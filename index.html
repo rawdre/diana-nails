@@ -346,6 +346,89 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   .package-image { height: 280px; order: -1; }
 }
 
+/* ───────── PORTFOLIO (carousel) ───────── */
+.portfolio { background: var(--bg); padding-right: 0; padding-left: 0; }
+.portfolio-head {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 clamp(24px, 6vw, 80px);
+}
+.portfolio-head .section-lead a {
+  color: var(--rose-deep);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+}
+.portfolio-head .section-lead a:hover { color: var(--ink); }
+.portfolio-track {
+  display: flex;
+  gap: clamp(12px, 1.6vw, 20px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  padding: 0 clamp(24px, 6vw, 80px) 8px;
+  scroll-padding-left: clamp(24px, 6vw, 80px);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.portfolio-track::-webkit-scrollbar { display: none; }
+.portfolio-card {
+  flex: 0 0 clamp(260px, 36vw, 420px);
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-warm);
+  cursor: grab;
+}
+.portfolio-card:active { cursor: grabbing; }
+.portfolio-card-img {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-warm);
+  transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.portfolio-card:hover .portfolio-card-img { transform: scale(1.05); }
+.portfolio-card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 22px 22px;
+  background: linear-gradient(180deg, transparent 0%, rgba(34,26,28,0.85) 100%);
+  color: var(--white);
+  z-index: 1;
+}
+.portfolio-card-caption {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.3;
+}
+.portfolio-card-tag {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-top: 6px;
+  font-style: normal;
+}
+.portfolio-hint {
+  max-width: 1200px;
+  margin: 28px auto 0;
+  padding: 0 clamp(24px, 6vw, 80px);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.portfolio-hint svg { width: 16px; height: 16px; }
+
 /* ───────── BOOKING (revealed on selection) ───────── */
 .booking-wrap {
   background: var(--bg-warm);
@@ -692,6 +775,67 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   </ul>
 </section>
 
+<!--
+  PORTFOLIO CAROUSEL
+  Swap the 6 background-image URLs below with real photos from @biaalmeidadf.
+  Drop them in /assets/portfolio/01.jpg ... 06.jpg and replace the URLs, or send me direct URLs.
+-->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-head reveal">
+    <p class="section-eyebrow">Portfólio</p>
+    <h2 class="section-title">Cada par de mãos<br>tem seu <em>jeito</em>.</h2>
+    <p class="section-lead">Mais trabalhos no Instagram <a href="https://instagram.com/biaalmeidadf" target="_blank" rel="noopener">@biaalmeidadf</a></p>
+  </div>
+  <div class="portfolio-track" id="portfolioTrack">
+    <figure class="portfolio-card">
+      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=85&auto=format&fit=crop');"></div>
+      <div class="portfolio-card-overlay">
+        <span class="portfolio-card-caption">Manicure clássica</span>
+        <span class="portfolio-card-tag">Esmaltação</span>
+      </div>
+    </figure>
+    <figure class="portfolio-card">
+      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=900&q=85&auto=format&fit=crop');"></div>
+      <div class="portfolio-card-overlay">
+        <span class="portfolio-card-caption">Vermelho atemporal</span>
+        <span class="portfolio-card-tag">Manicure</span>
+      </div>
+    </figure>
+    <figure class="portfolio-card">
+      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=900&q=85&auto=format&fit=crop');"></div>
+      <div class="portfolio-card-overlay">
+        <span class="portfolio-card-caption">Brilho duradouro</span>
+        <span class="portfolio-card-tag">Unhas em Gel</span>
+      </div>
+    </figure>
+    <figure class="portfolio-card">
+      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&q=85&auto=format&fit=crop');"></div>
+      <div class="portfolio-card-overlay">
+        <span class="portfolio-card-caption">Tons nude</span>
+        <span class="portfolio-card-tag">Manicure</span>
+      </div>
+    </figure>
+    <figure class="portfolio-card">
+      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1632344004722-b1f4e2bfd3d3?w=900&q=85&auto=format&fit=crop');"></div>
+      <div class="portfolio-card-overlay">
+        <span class="portfolio-card-caption">Cuidado dos pés</span>
+        <span class="portfolio-card-tag">Pedicure</span>
+      </div>
+    </figure>
+    <figure class="portfolio-card">
+      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1604654894611-9a1d40c46f4d?w=900&q=85&auto=format&fit=crop');"></div>
+      <div class="portfolio-card-overlay">
+        <span class="portfolio-card-caption">Combo completo</span>
+        <span class="portfolio-card-tag">Mani + Pedi</span>
+      </div>
+    </figure>
+  </div>
+  <p class="portfolio-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    Arraste para o lado
+  </p>
+</section>
+
 <section class="package">
   <div class="package-inner">
     <div class="package-image reveal"></div>
@@ -1011,6 +1155,25 @@ function generateTimes() {
 
 generateDates();
 generateTimes();
+
+// Portfolio carousel: mouse drag-to-scroll (touch swipe is native via scroll-snap)
+const track = document.getElementById('portfolioTrack');
+if (track) {
+  let isDown = false, startX = 0, scrollLeft = 0;
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; });
+  track.addEventListener('mouseup', () => { isDown = false; });
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+}
 </script>
 </body>
 </html>
