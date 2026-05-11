@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diana — Manicure & Pedicure</title>
-<meta name="description" content="Manicure e pedicure profissional. Atendimento com tempo e cuidado. Agende pelo WhatsApp.">
+<title>Diana — Manicure & Pedicure · Sobradinho II</title>
+<meta name="description" content="Manicure e pedicure profissional no Bia Almeida Beauty Studio, Sobradinho II, Brasília. Atendimento com tempo e cuidado. Agende pelo WhatsApp.">
 <meta name="theme-color" content="#221a1c">
 <meta property="og:title" content="Diana — Manicure & Pedicure">
-<meta property="og:description" content="Unhas com tempo, cuidado e olhar para o detalhe. Agende pelo WhatsApp.">
+<meta property="og:description" content="No Bia Almeida Beauty Studio · Sobradinho II, Brasília. Agende pelo WhatsApp.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -580,6 +580,20 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 .contact-value a { transition: color 0.3s; }
 .contact-value a:hover { color: var(--rose-deep); }
 .contact-value-sub { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: var(--ink-soft); display: block; margin-top: 4px; }
+.contact-map-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  border-bottom: 1px solid var(--rose-deep);
+  padding-bottom: 3px;
+  transition: gap 0.3s, color 0.3s, border-color 0.3s;
+}
+.contact-map-link:hover { gap: 12px; color: var(--ink); border-bottom-color: var(--ink); }
+.contact-map-link svg { width: 12px; height: 12px; }
 
 @media (max-width: 760px) {
   .contact-inner { grid-template-columns: 1fr; }
@@ -786,12 +800,23 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
         <span class="contact-value"><a href="https://wa.me/5561981527431" target="_blank" rel="noopener">+55 61 98152·7431</a></span>
       </div>
       <div class="contact-row">
+        <span class="contact-label">Onde estamos</span>
+        <span class="contact-value">
+          Bia Almeida Beauty Studio
+          <span class="contact-value-sub">Condomínio Europa Mall · ao lado da Clínica Belavence<br>Cd. Jd. Europa I, 11 · Qd. 1, Lt. 9, Lj. 11<br>Sobradinho II, Brasília — DF · 73105-900</span>
+          <a class="contact-map-link" href="https://www.google.com/maps/search/?api=1&query=Bia+Almeida+Beauty+Studio+Europa+Mall+Sobradinho+II+Bras%C3%ADlia+DF" target="_blank" rel="noopener">
+            Como chegar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </span>
+      </div>
+      <div class="contact-row">
         <span class="contact-label">Horário</span>
         <span class="contact-value">Segunda — Sábado<span class="contact-value-sub">8h às 19h</span></span>
       </div>
       <div class="contact-row">
         <span class="contact-label">Pagamento</span>
-        <span class="contact-value">PIX · Dinheiro</span>
+        <span class="contact-value">PIX · Dinheiro<span class="contact-value-sub">Cartões aceitos no estúdio</span></span>
       </div>
     </div>
   </div>
