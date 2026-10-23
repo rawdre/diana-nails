@@ -9,6 +9,8 @@
 <meta property="og:title" content="Diana Alves Raw — Manicure & Pedicure">
 <meta property="og:description" content="No Bia Almeida Beauty Studio · Sobradinho II, Brasília. Agende pelo WhatsApp.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://rawdre.github.io/diana-nails/assets/hero-studio.jpg">
+<link rel="preload" as="image" href="assets/hero-studio.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -142,15 +144,33 @@ a { color: inherit; text-decoration: none; }
 .hero-image {
   position: absolute; inset: 0;
   z-index: 0;
-  background-image:
-    linear-gradient(115deg, rgba(34,26,28,0.85) 0%, rgba(34,26,28,0.5) 50%, rgba(34,26,28,0.18) 100%),
-    url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1800&q=85&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center 35%;
+  overflow: hidden;
   background-color: #2b1f25;
   transform: scale(1.06);
   animation: heroZoom 1.8s cubic-bezier(0.16, 0.6, 0.2, 1) 0.1s forwards;
   will-change: transform;
+}
+.hero-image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+  display: block;
+  animation: kenBurns 26s ease-in-out 1.8s infinite alternate;
+  will-change: transform;
+}
+/* Cinematic overlay: keeps the left side dark for white text, plus a soft bottom vignette */
+.hero-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(115deg, rgba(34,26,28,0.88) 0%, rgba(34,26,28,0.55) 45%, rgba(34,26,28,0.15) 100%),
+    linear-gradient(0deg, rgba(34,26,28,0.55) 0%, transparent 35%);
+  pointer-events: none;
+}
+@keyframes kenBurns {
+  from { transform: scale(1) translate(0, 0); }
+  to { transform: scale(1.08) translate(-1.5%, -1%); }
 }
 .hero-aurora {
   position: absolute; inset: 0;
@@ -400,12 +420,20 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 }
 .package-image {
   height: clamp(340px, 56vh, 520px);
-  background-image:
-    linear-gradient(180deg, rgba(34,26,28,0.1), rgba(34,26,28,0.25)),
-    url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=1200&q=85&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  overflow: hidden;
   background-color: #3d2f33;
+}
+.package-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.package-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(34,26,28,0.1), rgba(34,26,28,0.3));
+  pointer-events: none;
 }
 .package-text .section-eyebrow { color: var(--gold-light); }
 .package-text .section-title { color: var(--white); }
@@ -559,8 +587,12 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 .portfolio-card:active { cursor: grabbing; }
 .portfolio-card-img {
   position: absolute; inset: 0;
-  background-size: cover;
-  background-position: center;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
   background-color: var(--bg-warm);
   transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
   transform: translateZ(0);
@@ -614,6 +646,13 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   gap: 12px;
 }
 .portfolio-hint svg { width: 16px; height: 16px; }
+.portfolio-note {
+  margin-top: 14px;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
 
 /* ───────── BOOKING (revealed on selection) ───────── */
 .booking-wrap {
@@ -895,6 +934,16 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   font-size: 0.76rem;
   letter-spacing: 1.5px;
 }
+.footer-version {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 100px;
+  font-size: 0.66rem;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.4);
+}
 
 /* Reveal-on-scroll utility */
 .reveal {
@@ -910,6 +959,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
    Hover transitions remain so the UI still feels alive. */
 @media (prefers-reduced-motion: reduce) {
   .hero-image { animation: none !important; transform: scale(1) !important; }
+  .hero-image img { animation: none !important; transform: none !important; }
   .hero-aurora::before, .hero-aurora::after { animation: none !important; }
   .hero-eyebrow, .hero-tagline, .hero-cta {
     animation: none !important; opacity: 1 !important; transform: none !important;
@@ -932,7 +982,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 </nav>
 
 <section class="hero" id="top">
-  <div class="hero-image" id="heroImg"></div>
+  <div class="hero-image" id="heroImg"><img src="assets/hero-studio.jpg" alt="Estúdio de manicure aconchegante com poltrona de veludo e esmaltes sobre mesa de mármore, em luz quente de fim de tarde" width="1344" height="752" fetchpriority="high"></div>
   <div class="hero-aurora" aria-hidden="true"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Manicure & Pedicure</p>
@@ -1010,18 +1060,19 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 
 <!--
   PORTFOLIO CAROUSEL
-  Swap the 6 background-image URLs below with real photos from @biaalmeidadf.
-  Drop them in /assets/portfolio/01.jpg ... 06.jpg and replace the URLs, or send me direct URLs.
+  v2.0.0: images are AI-generated illustrations (Higgsfield), labelled "Imagens ilustrativas" below.
+  Replace with real photos from @biaalmeidadf when available (assets/*.jpg) and remove the note.
 -->
 <section class="portfolio" id="portfolio">
   <div class="portfolio-head reveal">
     <p class="section-eyebrow">Portfólio</p>
     <h2 class="section-title">Cada par de mãos<br>tem seu <em>jeito</em>.</h2>
     <p class="section-lead">Mais trabalhos no Instagram <a href="https://instagram.com/biaalmeidadf" target="_blank" rel="noopener">@biaalmeidadf</a></p>
+    <p class="portfolio-note">Imagens ilustrativas</p>
   </div>
   <div class="portfolio-track" id="portfolioTrack">
     <figure class="portfolio-card">
-      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=85&auto=format&fit=crop');"></div>
+      <img class="portfolio-card-img" src="assets/mani-nude.jpg" alt="Unhas amendoadas com esmaltação nude-rosada brilhante (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async" draggable="false">
       <div class="portfolio-card-glare"></div>
       <div class="portfolio-card-overlay">
         <span class="portfolio-card-caption">Manicure clássica</span>
@@ -1029,7 +1080,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
     </figure>
     <figure class="portfolio-card">
-      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=900&q=85&auto=format&fit=crop');"></div>
+      <img class="portfolio-card-img" src="assets/mani-vermelho.jpg" alt="Unhas em vermelho vinho brilhante segurando uma taça (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async" draggable="false">
       <div class="portfolio-card-glare"></div>
       <div class="portfolio-card-overlay">
         <span class="portfolio-card-caption">Vermelho atemporal</span>
@@ -1037,7 +1088,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
     </figure>
     <figure class="portfolio-card">
-      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=900&q=85&auto=format&fit=crop');"></div>
+      <img class="portfolio-card-img" src="assets/gel-brilho.jpg" alt="Unhas em gel longas com brilho espelhado em rosa leitoso (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async" draggable="false">
       <div class="portfolio-card-glare"></div>
       <div class="portfolio-card-overlay">
         <span class="portfolio-card-caption">Brilho duradouro</span>
@@ -1045,7 +1096,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
     </figure>
     <figure class="portfolio-card">
-      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&q=85&auto=format&fit=crop');"></div>
+      <img class="portfolio-card-img" src="assets/francesinha.jpg" alt="Francesinha delicada sobre base nude com detalhe dourado (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async" draggable="false">
       <div class="portfolio-card-glare"></div>
       <div class="portfolio-card-overlay">
         <span class="portfolio-card-caption">Tons nude</span>
@@ -1053,7 +1104,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
     </figure>
     <figure class="portfolio-card">
-      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1632344004722-b1f4e2bfd3d3?w=900&q=85&auto=format&fit=crop');"></div>
+      <img class="portfolio-card-img" src="assets/pedicure-spa.jpg" alt="Pedicure com esmalte nude-rosado ao lado de bacia com pétalas (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async" draggable="false">
       <div class="portfolio-card-glare"></div>
       <div class="portfolio-card-overlay">
         <span class="portfolio-card-caption">Cuidado dos pés</span>
@@ -1061,7 +1112,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
     </figure>
     <figure class="portfolio-card">
-      <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1604654894611-9a1d40c46f4d?w=900&q=85&auto=format&fit=crop');"></div>
+      <img class="portfolio-card-img" src="assets/flatlay-esmaltes.jpg" alt="Esmaltes em tons nude e rosa com lixa e espátula sobre linho (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async" draggable="false">
       <div class="portfolio-card-glare"></div>
       <div class="portfolio-card-overlay">
         <span class="portfolio-card-caption">Combo completo</span>
@@ -1077,7 +1128,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 
 <section class="package">
   <div class="package-inner">
-    <div class="package-image reveal"></div>
+    <div class="package-image reveal"><img src="assets/ritual-still-life.jpg" alt="Ritual de cuidado: bacia com pétalas de rosa, toalha de linho e esmaltes em tons nude" width="1168" height="880" loading="lazy" decoding="async"></div>
     <div class="package-text reveal">
       <p class="section-eyebrow">Pacote mensal</p>
       <h2 class="section-title">Quatro <em>visitas</em>,<br>um ritual.</h2>
@@ -1209,6 +1260,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 <footer class="footer">
   <div class="footer-brand">Diana Alves Raw</div>
   <div class="footer-copy">Manicure & Pedicure · © 2026</div>
+  <div class="footer-version">v2.0.0</div>
 </footer>
 
 <a href="https://wa.me/5561981527431" class="fab-wa" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
