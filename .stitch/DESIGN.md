@@ -186,7 +186,7 @@ Honored. A `@media (prefers-reduced-motion: reduce)` block at the end of `index.
 - **Portfolio cards:** 3:4 aspect, single image per card, caption overlay at bottom with vertical gradient.
 
 ### Source & quality
-- **Current:** Unsplash placeholders pending real photos from `@biaalmeidadf`.
+- **Current (v2.0.0):** AI-generated illustrations (Higgsfield, `assets/*.jpg`) in hero, package and portfolio. Portfolio carries an "Imagens ilustrativas" note. Hero has a slow Ken-Burns drift (disabled under reduced motion). Replace with real photos from `@biaalmeidadf` when available.
 - **Target:** Real photos from the salon — natural light, close-up hands, no embedded text or branding in the image, calm tonal areas for any overlay text.
 - **Banned:** stock with embedded UI, fake before/after composites, blurred backgrounds with no subject.
 
