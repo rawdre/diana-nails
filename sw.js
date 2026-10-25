@@ -1,5 +1,5 @@
 // Bump CACHE on every release so clients pick up the new files.
-const CACHE = 'diana-v2.2.0';
+const CACHE = 'diana-v2.2.1';
 const CORE = [
   './',
   './index.html',
