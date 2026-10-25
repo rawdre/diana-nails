@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Diana Alves Raw — Manicure & Pedicure · Sobradinho II</title>
 <meta name="description" content="Diana Alves Raw — manicure e pedicure profissional no Bia Almeida Beauty Studio, Sobradinho II, Brasília. Atendimento com tempo e cuidado. Agende pelo WhatsApp.">
 <meta name="theme-color" content="#221a1c">
@@ -10,6 +10,13 @@
 <meta property="og:description" content="No Bia Almeida Beauty Studio · Sobradinho II, Brasília. Agende pelo WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://rawdre.github.io/diana-nails/assets/hero-studio.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Diana Nails">
 <link rel="preload" as="image" href="assets/hero-studio.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -945,6 +952,198 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   color: rgba(255,255,255,0.4);
 }
 
+/* ───────── NAV LINKS + HAMBURGER ───────── */
+.nav { padding-top: calc(22px + env(safe-area-inset-top)); }
+.nav.scrolled { padding-top: calc(14px + env(safe-area-inset-top)); }
+.nav-links { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); list-style: none; }
+.nav-links a {
+  font-size: 0.78rem; letter-spacing: 1.6px; text-transform: uppercase;
+  color: rgba(255,255,255,0.82); transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav.scrolled .nav-links a { color: var(--ink-soft); }
+.nav.scrolled .nav-links a:hover { color: var(--rose-deep); }
+.nav-links .nav-book {
+  padding: 10px 20px; border: 1px solid rgba(255,255,255,0.4); border-radius: 100px; color: var(--white);
+}
+.nav.scrolled .nav-links .nav-book { border-color: var(--ink); color: var(--ink); }
+.nav-burger {
+  display: none;
+  width: 44px; height: 44px; margin-right: -10px;
+  background: transparent; border: 0; cursor: pointer;
+  position: relative; z-index: 71;
+}
+.nav-burger span {
+  position: absolute; left: 11px; right: 11px; height: 1.5px;
+  background: var(--white); border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.6, 0.2, 1), opacity 0.25s, background 0.3s;
+}
+.nav-burger span:nth-child(1) { top: 16px; }
+.nav-burger span:nth-child(2) { top: 21.5px; }
+.nav-burger span:nth-child(3) { top: 27px; }
+.nav.scrolled .nav-burger span { background: var(--ink); }
+body.menu-open .nav-burger span { background: var(--ink); }
+body.menu-open .nav-burger span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+body.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
+body.menu-open .nav-burger span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+body.menu-open .nav-brand { color: var(--ink); }
+body.menu-open { overflow: hidden; }
+body.menu-open .nav { z-index: 75; background: transparent; border-bottom-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+.menu-sheet {
+  position: fixed; inset: 0; z-index: 70;
+  background: var(--bg);
+  padding: calc(96px + env(safe-area-inset-top)) 28px calc(32px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.6, 0.2, 1), visibility 0s 0.45s;
+  overflow-y: auto;
+}
+body.menu-open .menu-sheet { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.menu-sheet ol { list-style: none; border-top: 1px solid var(--line); }
+.menu-sheet li a {
+  display: flex; align-items: baseline; gap: 18px;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+  font-family: 'Fraunces', serif; font-weight: 300; font-size: 2rem; line-height: 1.1;
+}
+.menu-sheet li a small { font-family: 'Fraunces', serif; font-size: 0.85rem; color: var(--ink-mute); width: 24px; }
+.menu-sheet li a:active { color: var(--rose-deep); }
+.menu-actions { margin-top: auto; padding-top: 32px; display: grid; gap: 12px; }
+.menu-actions .btn { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.menu-actions .btn svg { width: 18px; height: 18px; }
+.btn-wa { background: #1fab4d; color: var(--white); }
+.menu-meta { margin-top: 18px; font-size: 0.78rem; color: var(--ink-mute); text-align: center; letter-spacing: 0.3px; }
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+}
+
+/* ───────── PWA INSTALL ───────── */
+[hidden] { display: none !important; }
+.install-banner {
+  position: fixed; z-index: 65;
+  left: 16px; right: 92px;
+  bottom: calc(clamp(18px, 3vw, 28px) + env(safe-area-inset-bottom));
+  max-width: 420px;
+  background: var(--ink); color: var(--white);
+  border-radius: 18px;
+  padding: 12px 10px 12px 12px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 18px 40px rgba(34,26,28,0.35);
+  animation: fadeUp 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.install-banner img { width: 36px; height: 36px; border-radius: 9px; flex: none; }
+.install-banner-text { flex: 1; min-width: 0; font-size: 0.78rem; line-height: 1.3; white-space: nowrap; color: rgba(255,255,255,0.75); }
+.install-banner-text strong { display: block; font-weight: 600; font-size: 0.88rem; }
+@media (max-width: 420px) { .install-banner img { display: none; } }
+.install-banner-go {
+  flex: none; background: var(--gold-light); color: var(--ink);
+  border: 0; border-radius: 100px; padding: 10px 16px;
+  font: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+}
+.install-banner-x {
+  flex: none; width: 28px; height: 28px; background: transparent; border: 0;
+  color: rgba(255,255,255,0.6); font-size: 1.2rem; line-height: 1; cursor: pointer;
+}
+.ios-sheet {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(34,26,28,0.55);
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.ios-sheet-card {
+  background: var(--bg); width: 100%; max-width: 480px;
+  border-radius: 22px 22px 0 0;
+  padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
+  animation: fadeUp 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.ios-sheet-card h3 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.5rem; margin-bottom: 14px; }
+.ios-sheet-card ol { padding-left: 20px; display: grid; gap: 10px; color: var(--ink-soft); margin-bottom: 22px; }
+.ios-sheet-card .btn { width: 100%; }
+
+/* ───────── SERVICES: "ask the price" rows ───────── */
+.service-price.ask {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.74rem; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--rose-deep);
+  padding: 9px 14px; border: 1px solid rgba(142, 86, 100, 0.35); border-radius: 100px;
+  align-self: center;
+}
+.service-row:hover .service-price.ask { background: var(--rose-deep); color: var(--white); }
+.service-ask-note { color: var(--rose-deep); }
+@media (max-width: 560px) {
+  .service-price.ask { padding: 8px 11px; font-size: 0.66rem; letter-spacing: 1px; }
+}
+
+/* ───────── RITUAIS (two-up image cards) ───────── */
+.rituals { background: var(--bg-warm); }
+.rituals-inner { max-width: 1200px; margin: 0 auto; }
+.rituals-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 4vw, 56px); margin-top: 56px;
+}
+.ritual-card:nth-child(2) { margin-top: clamp(0px, 8vw, 96px); }
+.ritual-img { aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg); }
+.ritual-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.ritual-card:hover .ritual-img img { transform: scale(1.04); }
+.ritual-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(1.5rem, 3vw, 2rem); margin-top: 24px; line-height: 1.15; }
+.ritual-name em { font-style: italic; }
+.ritual-desc { color: var(--ink-soft); margin-top: 8px; font-size: 0.95rem; max-width: 420px; }
+.ritual-cta {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 18px;
+  font-size: 0.8rem; letter-spacing: 1.3px; text-transform: uppercase;
+  color: var(--rose-deep); border-bottom: 1px solid currentColor; padding-bottom: 4px;
+  transition: gap 0.3s, color 0.3s;
+}
+.ritual-cta:hover { gap: 14px; color: var(--ink); }
+.ritual-cta svg { width: 14px; height: 14px; }
+@media (max-width: 680px) {
+  .rituals-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ritual-card:nth-child(2) { margin-top: 0; }
+}
+
+/* ───────── PAYMENT (amount toggle + Pix / Cartão) ───────── */
+.pay-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 28px; }
+.pay-toggle .choice-btn { padding: 14px 10px; }
+.pay-toggle .choice-btn small { display: block; font-size: 0.72rem; opacity: 0.7; margin-top: 2px; }
+.pay-tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+.pay-tab {
+  background: transparent; border: 0; padding: 16px 8px; cursor: pointer;
+  font: inherit; font-size: 0.86rem; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--ink-mute); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.pay-tab svg { width: 18px; height: 18px; }
+.pay-tab.active { color: var(--ink); border-bottom-color: var(--rose-deep); }
+.pay-panel { display: none; }
+.pay-panel.active { display: block; }
+.pix-qr {
+  width: 208px; height: 208px; margin: 0 auto 18px;
+  padding: 12px; background: var(--white); border: 1px solid var(--line-soft);
+  display: flex; align-items: center; justify-content: center;
+}
+.pix-qr img, .pix-qr canvas { width: 184px !important; height: 184px !important; }
+.pix-amount { font-family: 'Fraunces', serif; font-size: 1.6rem; margin-bottom: 4px; }
+.pix-help { font-size: 0.82rem; color: var(--ink-mute); margin-bottom: 18px; }
+.pix-key-line { font-size: 0.8rem; color: var(--ink-mute); margin-top: 16px; }
+.pix-key-line button { background: none; border: 0; font: inherit; color: var(--rose-deep); text-decoration: underline; cursor: pointer; }
+.card-pay-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; }
+.card-pay-btn svg { width: 18px; height: 18px; }
+.card-brands { font-size: 0.76rem; color: var(--ink-mute); margin-top: 14px; letter-spacing: 0.5px; }
+
+@media (max-width: 560px) {
+  .booking-wrap { padding-left: 20px; padding-right: 20px; }
+  .pix-card { padding: 28px 18px; }
+  .pix-summary-service { font-size: 1.2rem; }
+  .fab-wa { bottom: calc(18px + env(safe-area-inset-bottom)); }
+  .hero { padding-top: calc(110px + env(safe-area-inset-top)); }
+  .contact-row { grid-template-columns: 1fr; gap: 6px; }
+}
+
 /* Reveal-on-scroll utility */
 .reveal {
   opacity: 0;
@@ -977,9 +1176,39 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 
 <div class="grain" aria-hidden="true"></div>
 
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Menu principal">
   <a href="#top" class="nav-brand">Diana Alves <em style="font-style: italic;">Raw</em></a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#rituais">Rituais</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#pacote">Pacote</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#servicos" class="nav-book">Agendar</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuSheet">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="menu-sheet" id="menuSheet" aria-hidden="true">
+  <ol>
+    <li><a href="#servicos"><small>01</small>Serviços</a></li>
+    <li><a href="#rituais"><small>02</small>Rituais</a></li>
+    <li><a href="#portfolio"><small>03</small>Portfólio</a></li>
+    <li><a href="#pacote"><small>04</small>Pacote mensal</a></li>
+    <li><a href="#contato"><small>05</small>Contato</a></li>
+  </ol>
+  <div class="menu-actions">
+    <a class="btn btn-primary" href="#servicos">Agendar e pagar</a>
+    <a class="btn btn-wa" href="https://wa.me/5561981527431" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <button class="btn btn-ghost" type="button" data-install hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>
+      Instalar o app
+    </button>
+  </div>
+  <p class="menu-meta">Bia Almeida Beauty Studio · Sobradinho II</p>
+</div>
 
 <section class="hero" id="top">
   <div class="hero-image" id="heroImg"><img src="assets/hero-studio.jpg" alt="Estúdio de manicure aconchegante com poltrona de veludo e esmaltes sobre mesa de mármore, em luz quente de fim de tarde" width="1344" height="752" fetchpriority="high"></div>
@@ -1006,21 +1235,21 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
     <p class="section-lead">Toque em um serviço para reservar.</p>
   </div>
   <ul class="service-list reveal">
-    <li class="service-row" data-service="Manicure" data-price="40">
+    <li class="service-row" data-service="Manicure" data-price="35">
       <span class="service-num">01</span>
       <div>
         <span class="service-name">Manicure</span>
         <span class="service-meta">Esmaltação tradicional · 45 min</span>
       </div>
-      <span class="service-price">R$ 40</span>
+      <span class="service-price">R$ 35</span>
     </li>
-    <li class="service-row" data-service="Pedicure" data-price="40">
+    <li class="service-row" data-service="Pedicure" data-price="35">
       <span class="service-num">02</span>
       <div>
         <span class="service-name">Pedicure</span>
         <span class="service-meta">Cuidado completo dos pés · 45 min</span>
       </div>
-      <span class="service-price">R$ 40</span>
+      <span class="service-price">R$ 35</span>
     </li>
     <li class="service-row" data-service="Manicure + Pedicure" data-price="70">
       <span class="service-num">03</span>
@@ -1030,15 +1259,61 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
       <span class="service-price">R$ 70</span>
     </li>
-    <li class="service-row" data-service="Unhas em Gel" data-price="180">
+    <!-- Price set by the studio (Bia) — clients ask on WhatsApp instead of paying here -->
+    <li class="service-row" data-service="Unhas em Gel" data-ask="1">
       <span class="service-num">04</span>
       <div>
         <span class="service-name">Unhas em <em>Gel</em></span>
-        <span class="service-meta">Alongamento, durabilidade e brilho · 2h</span>
+        <span class="service-meta">Alongamento, durabilidade e brilho · <span class="service-ask-note">Pergunte o preço e agende seu horário</span></span>
       </div>
-      <span class="service-price">R$ 180</span>
+      <span class="service-price ask">Perguntar</span>
+    </li>
+    <li class="service-row" data-service="Spa dos Pés" data-ask="1">
+      <span class="service-num">05</span>
+      <div>
+        <span class="service-name">Spa dos <em>Pés</em></span>
+        <span class="service-meta">Pé de molho e esfoliação · <span class="service-ask-note">Pergunte o preço e agende seu horário</span></span>
+      </div>
+      <span class="service-price ask">Perguntar</span>
+    </li>
+    <li class="service-row" data-service="Banho de Lua com Parafina" data-ask="1">
+      <span class="service-num">06</span>
+      <div>
+        <span class="service-name">Banho de Lua <em>com Parafina</em></span>
+        <span class="service-meta"><span class="service-ask-note">Pergunte o preço e agende seu horário</span></span>
+      </div>
+      <span class="service-price ask">Perguntar</span>
     </li>
   </ul>
+</section>
+
+<section class="rituals" id="rituais">
+  <div class="rituals-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Rituais de cuidado</p>
+      <h2 class="section-title">Um tempo <em>só seu</em>.</h2>
+      <p class="section-lead">Pergunte o preço e agende seu horário pelo WhatsApp.</p>
+    </div>
+    <div class="rituals-grid">
+      <article class="ritual-card reveal">
+        <div class="ritual-img"><img src="assets/spa-dos-pes.jpg" alt="Pés em bacia de cerâmica com água morna e pétalas de rosa, ao lado de esfoliante rosa (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async"></div>
+        <h3 class="ritual-name">Spa dos <em>Pés</em></h3>
+        <p class="ritual-desc">Pé de molho em água morna e esfoliação para pés macios e renovados.</p>
+        <a class="ritual-cta" href="#" data-ask-service="Spa dos Pés">Pergunte o preço e agende
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </article>
+      <article class="ritual-card reveal">
+        <div class="ritual-img"><img src="assets/banho-de-lua-parafina.jpg" alt="Mãos saindo de um banho de parafina morna em ambiente de spa com velas (imagem ilustrativa)" width="880" height="1168" loading="lazy" decoding="async"></div>
+        <h3 class="ritual-name">Banho de Lua <em>com Parafina</em></h3>
+        <p class="ritual-desc">Hidratação profunda com parafina morna e acabamento iluminado.</p>
+        <a class="ritual-cta" href="#" data-ask-service="Banho de Lua com Parafina">Pergunte o preço e agende
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </article>
+    </div>
+    <p class="portfolio-note" style="margin-top: 32px;">Imagens ilustrativas</p>
+  </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
@@ -1047,12 +1322,16 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
     <span class="marquee-item">Pedicure</span>
     <span class="marquee-item">Mani + Pedi</span>
     <span class="marquee-item">Unhas em Gel</span>
+    <span class="marquee-item">Spa dos Pés</span>
+    <span class="marquee-item">Banho de Lua</span>
     <span class="marquee-item">Pacote Mensal</span>
     <span class="marquee-item">Diana Alves Raw</span>
     <span class="marquee-item">Manicure</span>
     <span class="marquee-item">Pedicure</span>
     <span class="marquee-item">Mani + Pedi</span>
     <span class="marquee-item">Unhas em Gel</span>
+    <span class="marquee-item">Spa dos Pés</span>
+    <span class="marquee-item">Banho de Lua</span>
     <span class="marquee-item">Pacote Mensal</span>
     <span class="marquee-item">Diana Alves Raw</span>
   </div>
@@ -1126,21 +1405,21 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   </p>
 </section>
 
-<section class="package">
+<section class="package" id="pacote">
   <div class="package-inner">
     <div class="package-image reveal"><img src="assets/ritual-still-life.jpg" alt="Ritual de cuidado: bacia com pétalas de rosa, toalha de linho e esmaltes em tons nude" width="1168" height="880" loading="lazy" decoding="async"></div>
     <div class="package-text reveal">
       <p class="section-eyebrow">Pacote mensal</p>
       <h2 class="section-title">Quatro <em>visitas</em>,<br>um ritual.</h2>
-      <p class="section-lead">Quatro sessões de manicure e pedicure por mês, com prioridade na agenda.</p>
+      <p class="section-lead">Quatro visitas de manicure e pedicure pagas de uma vez, com prioridade na agenda.</p>
       <div class="package-price-row">
         <span class="package-old">R$ 280</span>
-        <span class="package-new">R$ 250</span>
-        <span class="package-period">/ mês</span>
+        <span class="package-new">R$ 260</span>
+        <span class="package-period">/ 4 visitas</span>
       </div>
-      <span class="package-savings">Economia de R$ 30</span>
+      <span class="package-savings">Economia de R$ 20</span>
       <div>
-        <button class="package-cta" id="packageCta" data-service="Pacote Mensal (4× Mani + Pedi)" data-price="250">
+        <button class="package-cta" id="packageCta" data-service="Pacote Mensal (4× Mani + Pedi)" data-price="260">
           Selecionar pacote
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
@@ -1183,14 +1462,53 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
     <!-- STEP 2: PIX -->
     <div class="step-panel" id="step2">
       <p class="section-eyebrow">Pagamento</p>
-      <h2 class="section-title">Sinal de <em>50%</em><br>para reservar.</h2>
+      <h2 class="section-title">Pague <em>pelo site</em><br>e reserve.</h2>
 
       <div class="pix-summary">
         <div class="pix-summary-service" id="summaryService">—</div>
         <div class="pix-summary-meta">Valor total · <span id="summaryTotal">R$ 0</span></div>
         <div class="pix-deposit" id="summaryDeposit">R$ 0</div>
-        <div class="pix-deposit-label">Sinal · pague agora</div>
-        <div class="pix-remaining">Restante no dia · <span id="summaryRemaining">R$ 0</span></div>
+        <div class="pix-deposit-label" id="summaryDepositLabel">Sinal · pague agora</div>
+        <div class="pix-remaining" id="summaryRemainingRow">Restante no dia · <span id="summaryRemaining">R$ 0</span></div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Quanto pagar agora</span>
+        <div class="pay-toggle" id="payToggle">
+          <button type="button" class="choice-btn selected" data-amount="deposit">Sinal 50%<small id="optDeposit">R$ 0</small></button>
+          <button type="button" class="choice-btn" data-amount="full">Valor total<small id="optFull">R$ 0</small></button>
+        </div>
+      </div>
+
+      <div class="pay-tabs" role="tablist">
+        <button type="button" class="pay-tab active" role="tab" data-method="pix" aria-selected="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M8 12h8"/></svg>
+          Pix
+        </button>
+        <button type="button" class="pay-tab" role="tab" data-method="card" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6.5 15h4"/></svg>
+          Cartão
+        </button>
+      </div>
+
+      <div class="pix-card pay-panel active" id="panelPix">
+        <div class="pix-card-label">Pix · QR Code</div>
+        <div class="pix-amount" id="pixAmount">R$ 0</div>
+        <p class="pix-help">Abra o app do seu banco e escaneie, ou use o Pix Copia e Cola.</p>
+        <div class="pix-qr" id="pixQr" aria-label="QR Code Pix"></div>
+        <button class="copy-btn" id="copyBtn" type="button" onclick="copyPixCode()">Copiar Pix Copia e Cola</button>
+        <p class="pix-key-line">Chave (telefone): 61 98152·7431 · <button type="button" onclick="copyPixKey(this)">copiar chave</button></p>
+      </div>
+
+      <div class="pix-card pay-panel" id="panelCard">
+        <div class="pix-card-label">Cartão de crédito</div>
+        <div class="pix-amount" id="cardAmount">R$ 0</div>
+        <p class="pix-help" id="cardHelp">Pagamento seguro pelo link de pagamento da Diana.</p>
+        <button class="btn btn-primary card-pay-btn" id="cardPayBtn" type="button" onclick="payWithCard()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19"/></svg>
+          Pagar com cartão
+        </button>
+        <p class="card-brands">Visa · Mastercard · Elo · Hipercard · Amex</p>
       </div>
 
       <div class="policy">
@@ -1198,15 +1516,9 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
         <div class="policy-body">O sinal não é reembolsável em caso de cancelamento com menos de 24h ou no-show.</div>
       </div>
 
-      <div class="pix-card">
-        <div class="pix-card-label">Chave PIX · Telefone</div>
-        <div class="pix-key-value" id="pixKey">61 98152·7431</div>
-        <button class="copy-btn" id="copyBtn" onclick="copyPix()">Copiar chave</button>
-      </div>
-
       <label class="confirm" id="confirmLabel" for="confirmPaid">
         <input type="checkbox" id="confirmPaid">
-        <span class="confirm-text">Já fiz o PIX de <strong id="confirmAmount">R$ 0</strong> e vou enviar o comprovante pelo WhatsApp.</span>
+        <span class="confirm-text" id="confirmText">Já paguei <strong id="confirmAmount">R$ 0</strong> e vou enviar o comprovante pelo WhatsApp.</span>
       </label>
 
       <button class="wa-btn" id="whatsappBtn" onclick="bookWhatsApp()" disabled>
@@ -1221,7 +1533,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
   </div>
 </section>
 
-<section class="contact">
+<section class="contact" id="contato">
   <div class="contact-inner">
     <div class="reveal">
       <p class="section-eyebrow">Contato</p>
@@ -1251,7 +1563,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
       </div>
       <div class="contact-row">
         <span class="contact-label">Pagamento</span>
-        <span class="contact-value">PIX · Dinheiro<span class="contact-value-sub">Cartões aceitos no estúdio</span></span>
+        <span class="contact-value">Pix · Cartão de crédito<span class="contact-value-sub">Pague pelo site ao agendar · dinheiro no estúdio</span></span>
       </div>
     </div>
   </div>
@@ -1260,20 +1572,71 @@ section { padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px); }
 <footer class="footer">
   <div class="footer-brand">Diana Alves Raw</div>
   <div class="footer-copy">Manicure & Pedicure · © 2026</div>
-  <div class="footer-version">v2.0.0</div>
+  <div class="footer-version">v2.1.0</div>
 </footer>
+
+<div class="install-banner" id="installBanner" hidden>
+  <img src="icons/icon-192.png" alt="" width="40" height="40">
+  <div class="install-banner-text"><strong>Instale o app</strong>Agende em 1 toque</div>
+  <button class="install-banner-go" type="button" data-install>Instalar</button>
+  <button class="install-banner-x" type="button" id="installDismiss" aria-label="Fechar">&times;</button>
+</div>
+
+<div class="ios-sheet" id="iosSheet" hidden>
+  <div class="ios-sheet-card" role="dialog" aria-modal="true" aria-labelledby="iosSheetTitle">
+    <h3 id="iosSheetTitle">Instalar no iPhone</h3>
+    <ol>
+      <li>Toque em <strong>Compartilhar</strong> (o quadrado com a seta) no Safari.</li>
+      <li>Escolha <strong>Adicionar à Tela de Início</strong>.</li>
+      <li>Toque em <strong>Adicionar</strong>. Pronto!</li>
+    </ol>
+    <button class="btn btn-primary" type="button" id="iosSheetClose">Entendi</button>
+  </div>
+</div>
 
 <a href="https://wa.me/5561981527431" class="fab-wa" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<script src="js/pix.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <script>
+/*
+  PAYMENT CONFIG
+  Pix: works now. The site builds a Pix QR / Copia e Cola with the exact amount, paid straight to the key.
+  Cartão: paste payment links from InfinitePay / Mercado Pago / PagBank (one link per amount, in reais).
+  An amount with no link falls back to WhatsApp, where Diana sends the card link by hand.
+*/
+const PAYMENT = {
+  whatsapp: '5561981527431',
+  pix: { key: '+5561981527431', name: 'Diana Alves Raw', city: 'Brasilia' },
+  cardLinks: {
+    // 35: 'https://...', 70: 'https://...', 130: 'https://...', 260: 'https://...'
+  },
+};
+
 let selectedService = '';
 let selectedPrice = 0;
 let selectedMeta = '';
 let selectedDate = '';
 let selectedTime = '';
 let isPackage = false;
+let payMode = 'deposit';   // 'deposit' | 'full'
+let payMethod = 'pix';     // 'pix' | 'card'
+let pixCode = '';
+
+const brl = (v) => 'R$ ' + (Number.isInteger(v) ? v : v.toFixed(2).replace('.', ','));
+const waLink = (msg) => 'https://wa.me/' + PAYMENT.whatsapp + '?text=' + encodeURIComponent(msg);
+
+// Services priced by the studio: no checkout, ask on WhatsApp
+function askPrice(service) {
+  const msg = 'Olá Diana! Gostaria de saber o preço e agendar um horário para: *' + service + '*';
+  window.open(waLink(msg), '_blank', 'noopener');
+}
+document.querySelectorAll('[data-ask-service]').forEach(a => a.addEventListener('click', (e) => {
+  e.preventDefault();
+  askPrice(a.dataset.askService);
+}));
 
 // Sticky nav + hero parallax
 const nav = document.getElementById('nav');
@@ -1306,6 +1669,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // Service selection
 function selectService(row) {
+  if (row.dataset.ask) { askPrice(row.dataset.service); return; }
   document.querySelectorAll('.service-row').forEach(r => r.classList.remove('selected'));
   document.getElementById('packageCta').classList.remove('selected');
   row.classList.add('selected');
@@ -1351,18 +1715,78 @@ function goStep(step) {
   document.getElementById('bookingWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+const depositOf = (price) => Math.ceil(price / 2);
+const amountDue = () => (payMode === 'full' ? selectedPrice : depositOf(selectedPrice));
+
 function updateSummary() {
-  const deposit = Math.ceil(selectedPrice / 2);
-  const remaining = selectedPrice - deposit;
+  const deposit = depositOf(selectedPrice);
+  const due = amountDue();
+  const remaining = selectedPrice - due;
   const dateTime = `${selectedDate} · ${selectedTime}`;
   const sub = isPackage
     ? `<span style="display:block; font-size:0.86rem; color:var(--ink-mute); margin-top:6px; font-family:Satoshi, sans-serif; letter-spacing:0.3px;">1ª sessão · ${dateTime}</span>`
     : `<span style="display:block; font-size:0.86rem; color:var(--ink-mute); margin-top:6px; font-family:Satoshi, sans-serif; letter-spacing:0.3px;">${dateTime}</span>`;
   document.getElementById('summaryService').innerHTML = selectedService + sub;
-  document.getElementById('summaryTotal').textContent = 'R$ ' + selectedPrice;
-  document.getElementById('summaryDeposit').textContent = 'R$ ' + deposit;
-  document.getElementById('summaryRemaining').textContent = 'R$ ' + remaining;
-  document.getElementById('confirmAmount').textContent = 'R$ ' + deposit;
+  document.getElementById('summaryTotal').textContent = brl(selectedPrice);
+  document.getElementById('summaryDeposit').textContent = brl(due);
+  document.getElementById('summaryDepositLabel').textContent = payMode === 'full' ? 'Valor total · pague agora' : 'Sinal · pague agora';
+  document.getElementById('summaryRemaining').textContent = brl(remaining);
+  document.getElementById('summaryRemainingRow').hidden = remaining === 0;
+  document.getElementById('optDeposit').textContent = brl(deposit);
+  document.getElementById('optFull').textContent = brl(selectedPrice);
+  document.getElementById('confirmAmount').textContent = brl(due);
+  document.getElementById('pixAmount').textContent = brl(due);
+  document.getElementById('cardAmount').textContent = brl(due);
+  document.getElementById('cardHelp').textContent = PAYMENT.cardLinks[due]
+    ? 'Pagamento seguro pelo link de pagamento da Diana.'
+    : 'Você recebe o link de pagamento seguro pelo WhatsApp.';
+  renderPix(due);
+}
+
+// Pix: exact-amount QR + Copia e Cola, generated in the browser
+function renderPix(amount) {
+  const box = document.getElementById('pixQr');
+  try {
+    pixCode = Pix.buildPixPayload({ ...PAYMENT.pix, amount, txid: 'DIANA' + Date.now().toString(36).toUpperCase() });
+  } catch (err) {
+    pixCode = '';
+    box.textContent = 'Use a chave Pix abaixo.';
+    return;
+  }
+  box.innerHTML = '';
+  if (window.QRCode) {
+    new QRCode(box, { text: pixCode, width: 184, height: 184, colorDark: '#221a1c', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+  } else {
+    box.textContent = 'Use o Pix Copia e Cola abaixo.';
+  }
+}
+
+document.querySelectorAll('#payToggle .choice-btn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('#payToggle .choice-btn').forEach(b => b.classList.toggle('selected', b === btn));
+  payMode = btn.dataset.amount;
+  updateSummary();
+}));
+
+document.querySelectorAll('.pay-tab').forEach(tab => tab.addEventListener('click', () => {
+  payMethod = tab.dataset.method;
+  document.querySelectorAll('.pay-tab').forEach(t => {
+    const on = t === tab;
+    t.classList.toggle('active', on);
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  document.getElementById('panelPix').classList.toggle('active', payMethod === 'pix');
+  document.getElementById('panelCard').classList.toggle('active', payMethod === 'card');
+}));
+
+function payWithCard() {
+  const due = amountDue();
+  const link = PAYMENT.cardLinks[due];
+  if (link) { window.open(link, '_blank', 'noopener'); return; }
+  const name = document.getElementById('clientName').value.trim();
+  const msg = 'Olá Diana! Sou ' + name + ' e quero pagar no *cartão de crédito*.\n\n'
+    + 'Serviço: *' + selectedService + '*\nDia: *' + selectedDate + '* · *' + selectedTime + '*\n'
+    + 'Valor: *' + brl(due) + '*\n\nPode me enviar o link de pagamento?';
+  window.open(waLink(msg), '_blank', 'noopener');
 }
 
 // Confirm checkbox
@@ -1370,39 +1794,46 @@ const confirmPaid = document.getElementById('confirmPaid');
 const waBtn = document.getElementById('whatsappBtn');
 confirmPaid.addEventListener('change', () => { waBtn.disabled = !confirmPaid.checked; });
 
-function copyPix() {
-  const key = '61981527431';
-  const setCopied = () => {
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = 'Copiado'; btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copiar chave'; btn.classList.remove('copied'); }, 2000);
-  };
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(key).then(setCopied).catch(() => {
-      const ta = document.createElement('textarea'); ta.value = key;
-      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-      setCopied();
-    });
-  } else {
-    const ta = document.createElement('textarea'); ta.value = key;
+function copyText(text, onDone) {
+  const fallback = () => {
+    const ta = document.createElement('textarea'); ta.value = text;
     document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-    setCopied();
-  }
+    onDone();
+  };
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(onDone).catch(fallback);
+  else fallback();
+}
+
+function copyPixCode() {
+  if (!pixCode) return;
+  const btn = document.getElementById('copyBtn');
+  copyText(pixCode, () => {
+    btn.textContent = 'Copiado — cole no app do banco'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copiar Pix Copia e Cola'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+
+function copyPixKey(btn) {
+  copyText('61981527431', () => {
+    btn.textContent = 'copiada';
+    setTimeout(() => { btn.textContent = 'copiar chave'; }, 2000);
+  });
 }
 
 function bookWhatsApp() {
   if (!confirmPaid.checked) return;
   const name = document.getElementById('clientName').value.trim();
-  const deposit = Math.ceil(selectedPrice / 2);
+  const due = amountDue();
+  const method = payMethod === 'card' ? 'cartão de crédito' : 'Pix';
   let msg = 'Olá Diana!\n\n';
   msg += 'Nome: *' + name + '*\n';
-  msg += 'Serviço: *' + selectedService + '* (R$ ' + selectedPrice + ')\n';
+  msg += 'Serviço: *' + selectedService + '* (' + brl(selectedPrice) + ')\n';
   msg += 'Dia: *' + selectedDate + '*\n';
   msg += 'Horário: *' + selectedTime + '*\n';
-  msg += 'Sinal pago: *R$ ' + deposit + '* via PIX\n';
-  if (isPackage) msg += '\nPacote mensal — vamos agendar as outras 3 sessões.\n';
+  msg += (payMode === 'full' ? 'Valor total pago: *' : 'Sinal pago: *') + brl(due) + '* via ' + method + '\n';
+  if (isPackage) msg += '\nPacote de 4 visitas — vamos agendar as outras 3 sessões.\n';
   msg += '\nSegue o comprovante.';
-  window.open('https://wa.me/5561981527431?text=' + encodeURIComponent(msg), '_blank');
+  window.open(waLink(msg), '_blank', 'noopener');
 }
 
 // Date / time generation
@@ -1488,6 +1919,72 @@ if (!isTouch) {
       card.style.setProperty('--ry', '0deg');
     });
   });
+}
+
+// Hamburger menu (mobile)
+const burger = document.getElementById('navBurger');
+const menuSheet = document.getElementById('menuSheet');
+function setMenu(open) {
+  document.body.classList.toggle('menu-open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  menuSheet.setAttribute('aria-hidden', open ? 'false' : 'true');
+}
+burger.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+menuSheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+// PWA install CTA: Android/desktop use the native prompt, iOS gets instructions
+const isStandalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+const installBanner = document.getElementById('installBanner');
+const iosSheet = document.getElementById('iosSheet');
+let deferredInstall = null;
+
+const storage = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode: banner just reappears next visit */ } },
+};
+
+function showInstallUI() {
+  if (isStandalone) return;
+  document.querySelectorAll('[data-install]').forEach(b => { b.hidden = false; });
+  if (!storage.get('installDismissed') && matchMedia('(max-width: 860px)').matches) {
+    setTimeout(() => { installBanner.hidden = false; }, 4000);
+  }
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstall = e;
+  showInstallUI();
+});
+if (isIOS) showInstallUI();
+
+document.querySelectorAll('[data-install]').forEach(btn => btn.addEventListener('click', async () => {
+  setMenu(false);
+  if (deferredInstall) {
+    deferredInstall.prompt();
+    const { outcome } = await deferredInstall.userChoice;
+    deferredInstall = null;
+    if (outcome === 'accepted') installBanner.hidden = true;
+  } else if (isIOS) {
+    iosSheet.hidden = false;
+  }
+}));
+document.getElementById('installDismiss').addEventListener('click', () => {
+  installBanner.hidden = true;
+  storage.set('installDismissed', '1');
+});
+document.getElementById('iosSheetClose').addEventListener('click', () => { iosSheet.hidden = true; });
+iosSheet.addEventListener('click', (e) => { if (e.target === iosSheet) iosSheet.hidden = true; });
+window.addEventListener('appinstalled', () => {
+  installBanner.hidden = true;
+  document.querySelectorAll('[data-install]').forEach(b => { b.hidden = true; });
+});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => { /* site works without offline cache */ }));
 }
 </script>
 </body>
